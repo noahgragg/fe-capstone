@@ -104,6 +104,21 @@ app.delete('/api/project/:id', (req,res)=>{
     });
 });
 
+app.patch('/api/project/:id', (req, res) => {
+    let {project_name, project_link, project_desc, user_id, project_id} = req.body;
+    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
+        pool.query(`UPDATE projects SET (project_name, project_link, project_desc, user_id) VALUES ($1, $2, $3, $4) WHERE project_id=$5`, [project_name, project_link, project_desc, user_id, project_id])
+        .then(()=>{
+            res.status(201)
+            res.send(`Updated project in capstone_data`)
+        })
+        .catch(err=>console.log(err))
+    }else{
+        res.status(404);
+        res.send(`404 ERROR: bad input please provide all input fields: project_name|project_link|project_desc|user_id|project_id`)
+    }    
+});
+
 app.listen(PORT, function() {
     console.log(`Server is running on ${PORT}`)
 });
