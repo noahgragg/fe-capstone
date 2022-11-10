@@ -7,6 +7,7 @@ import LogIn from './LogIn';
 
 const url = 'http://localhost:8000';
 const App = () => {
+
   const [profileCardInfo, setProfileCardInfo] = useState([{
     user_id: 0,
     username: '',
@@ -21,6 +22,8 @@ const App = () => {
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data)) 
       console.log(profileCardInfo); 
+
+  
   }, [])
 
   return (
