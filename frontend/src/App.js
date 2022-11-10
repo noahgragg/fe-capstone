@@ -18,7 +18,7 @@ const App = () => {
     github_link: ''
   }]);
   useEffect(() => {
-      fetch(`${url}/api/data`)
+      fetch(`${url}/`)
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data)) 
       console.log(profileCardInfo); 
