@@ -61,7 +61,7 @@ app.patch('/api/data/:id', (req,res)=>{
 
     if(username && first_name && last_name && summary && resume_link && github_link &&
         username.length != 0 && first_name.length != 0 && last_name.length != 0 && summary.length != 0 && resume_link.length != 0 && github_link.length != 0){
-           pool.query (`UPDATE users SET username = $1, first_name= $2, last_name=$3, summary=$4, resume_link=$5, github_link=$5) WHERE user_id = ${req.params.id}`, [username, first_name, last_name,summary,resume_link, github_link])
+           pool.query (`UPDATE users SET username = $1, first_name= $2, last_name=$3, summary=$4, resume_link=$5, github_link=$6 WHERE user_id = ${req.params.id}`, [username, first_name, last_name,summary,resume_link, github_link])
             .then(results=>{
                 res.status(201);
                 res.send(`Updated user data to data base`);
@@ -125,10 +125,11 @@ app.delete('/api/project/:id', (req,res)=>{
     });
 });
 
+// update project by ID 
 app.patch('/api/project/:id', (req, res) => {
-    let {project_name, project_link, project_desc, user_id, project_id} = req.body;
-    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
-        pool.query(`UPDATE projects SET (project_name, project_link, project_desc, user_id) VALUES ($1, $2, $3, $4) WHERE project_id=$5`, [project_name, project_link, project_desc, user_id, project_id])
+    let {project_name, project_link, project_desc} = req.body;
+    if(project_name && project_link && project_desc && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0){
+        pool.query(`UPDATE projects SET project_name= $1, project_link=$2, project_desc=$3 WHERE project_id=${req.params.id}`, [project_name, project_link, project_desc])
         .then(()=>{
             res.status(201)
             res.send(`Updated project in capstone_data`)
