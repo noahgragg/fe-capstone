@@ -11,4 +11,3 @@ VALUES
 ('React-MVP-Circuit-Workouts', 'https://github.com/Lowjoejoe/React-MVP-Circuit-Workouts','allows users to build custom circuit workouts', 1),
 ('mvp-fullstack', 'https://github.com/noahgragg/mvp-fullstack', 'displays loot and bosses from Ice Crown Citadel.', 2),
 ('React-MVP', 'https://github.com/Jpkelley6/React-MVP','Diablo II builds finder', 3),
-('Shoe_Shop', 'https://github.com/Lowjoejoe/Shoe_Shop','online shoe shop with full CRUD', 1);

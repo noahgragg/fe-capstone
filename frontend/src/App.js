@@ -6,6 +6,14 @@ import CreateUser from './CreateUser';
 import LogIn from './LogIn';
 
 const App = () => {
+  const [profileCardInfo, setProfileCardInfo] = useState([{}]);
+  useEffect(() => {
+      fetch('/api/data')
+      .then(res => res.json())
+      .then((data) => console.log("data from fetch:",data))
+      // console.log(profileCardInfo);
+  }, [])
+
   return (
     <div className="App">
       <Header />
