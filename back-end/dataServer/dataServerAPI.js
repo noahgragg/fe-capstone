@@ -6,6 +6,7 @@ const config = require('./dataServerConfig')[process.env.NODE_ENV||"dev"]
 const PORT = config.port
 const pool = new Pool({
     connectionString: config.connectionString,
+    
 });
 app.use(cors())
 app.use(express.json());
