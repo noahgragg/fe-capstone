@@ -5,34 +5,21 @@ import Home from './Home';
 import CreateUser from './CreateUser';
 import LogIn from './LogIn';
 
-const url = 'http://localhost:8000';
 const App = () => {
-
-  const [profileCardInfo, setProfileCardInfo] = useState([{
-    user_id: 0,
-    username: '',
-    first_name: '',
-    last_name: '',
-    summary: '',
-    resume_link: '',
-    github_link: ''
-  }]);
+  const [profileCardInfo, setProfileCardInfo] = useState([{}]);
   useEffect(() => {
-      fetch(`${url}/api/data`)
+      fetch('/api/data')
       .then(res => res.json())
-      .then((data) => setProfileCardInfo(data)) 
-      console.log(profileCardInfo); 
-
-  
+      .then((data) => console.log("data from fetch:",data))
+      // console.log(profileCardInfo);
   }, [])
 
   return (
     <div className="App">
       <Header />
-      <div className='below-header'></div>
       <div>
         <Routes>
-          <Route path='/home' element={<Home profileCardInfo={profileCardInfo}/>} />
+          <Route path='/home' element={<Home />} />
           <Route path='/create-user' element={<CreateUser />} />
         </Routes>
       </div>

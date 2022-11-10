@@ -8,17 +8,13 @@
 .header-container { 
     height: 250px;
     background-image: url('header_bkimg.jpg');
-}
-.below-header {
-    height: 10px;
-    width: 100%;
-    color:rgb(71, 124, 215);
+    
 }
 .nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    background-color: rgb(25, 60, 143);
+    background-color: rgb(166, 176, 176);
     height: 35px;
     padding-right: 15px;
     position: sticky;
@@ -35,13 +31,9 @@
 #nav-link {
     text-decoration: none;
     font-size: 2rem;
-    
-}
-#nav-link:link {
-    color: white;
 }
 #nav-link:visited {
-    color: white;
+    color: black;
 }
 
     /* HOME PAGE STYLING */
@@ -50,8 +42,7 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    /* background-color: rgb(166, 176, 176); */
-    background-image: url('tech_background.jpg');
+    background-color: rgb(166, 176, 176);
     height: 100vh;
 }
 .home-body {
@@ -61,40 +52,6 @@
     color: grey;
     padding: 20px;
 }
-.h1-div {
-    display: flex;
-    justify-content: center;
-}
-.home-body-h1-1 {
+.home-body-h1 {
     font-size: 3rem;
-}
-.home-body-h1-2 {
-    font-size: 3rem;
-    color: rgb(71, 124, 215);
-}
-.profile-card-container {
-    display: flex; 
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 25px;
-    /* width: 90%; */
-}
-.profile-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    border: 3px solid white;
-    border-radius: 10px;
-    padding: 10px;
-    width: 225px;
-}
-.profile-name {
-    color: rgb(71, 124, 215);
-}
-.profile-summary {
-    width: 180px;
-}
-.profile-summary-h4 {
-    color: white;
 }
