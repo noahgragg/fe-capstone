@@ -55,6 +55,26 @@ app.post('/api/data', (req,res)=>{
         }
 });
 
+// update user data to the data base
+app.patch('/api/data/:id', (req,res)=>{
+    let {username, first_name, last_name, summary, resume_link, github_link} = req.body; 
+
+    if(username && first_name && last_name && summary && resume_link && github_link &&
+        username.length != 0 && first_name.length != 0 && last_name.length != 0 && summary.length != 0 && resume_link.length != 0 && github_link.length != 0){
+           pool.query (`UPDATE users SET username = $1, first_name= $2, last_name=$3, summary=$4, resume_link=$5, github_link=$5) WHERE user_id = ${req.params.id}`, [username, first_name, last_name,summary,resume_link, github_link])
+            .then(results=>{
+                res.status(201);
+                res.send(`Updated user data to data base`);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        }else{
+            res.status(404);
+            res.send(`404 ERROR: bad input please provide all input fields: username|first_name|last_name|summary|resume_link|github_link`)
+        }
+});
+
 // delete user from the data base by id 
 app.delete('/api/data/:id', (req,res)=>{
     pool.query(`SELECT FROM users WHERE user_id = ${req.params.id}`)
@@ -71,7 +91,7 @@ app.delete('/api/data/:id', (req,res)=>{
     })
 });
 
-//Post new project 
+//Post / Create new project 
 app.post('/api/project', (req,res)=>{
    let {project_name, project_link, project_desc, user_id} = req.body;
    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
@@ -86,6 +106,7 @@ app.post('/api/project', (req,res)=>{
         res.send(`404 ERROR: bad input please provide all input fields: project_name|project_link|project_desc|user.id`)
    }
 });
+
 
 
 //Delete project by id 
