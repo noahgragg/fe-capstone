@@ -1,17 +1,21 @@
-import React from 'react'
+import React from 'react';
+import ProfileCard from './ProfileCard';
 
-const Home = () => {
+const Home = ({profileCardInfo}) => {
   return (
     <div className='home-container'>
         <div className='home-body'>
-            <h1 className='home-body-h1'>Welcome</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora itaque 
+            <div className='h1-div'>
+              <h1 className='home-body-h1-1'>Meet your next&nbsp;</h1><h1 className='home-body-h1-2'>Software Enginner</h1>
+            </div>
+
+            {/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora itaque 
                 cupiditate velit. Non neque quibusdam nihil totam corrupti porro nam eveniet
                 nemo mollitia autem. Dicta ab vel veritatis pariatur numquam blanditiis 
                 minus, est hic necessitatibus fugiat quam saepe enim molestias repellat 
                 omnis unde debitis quia ea, rem cupiditate sapiente. Deserunt.
-            </p><br />
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque 
+            </p><br /> */}
+            {/* <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque 
                 praesentium explicabo dignissimos rerum et similique cumque, deleniti, 
                 asperiores iste dolore, nostrum velit? Corporis enim saepe quidem repellat
                  libero eum ipsam. Iusto repellendus eos mollitia, repudiandae eius 
@@ -31,8 +35,17 @@ const Home = () => {
                  corporis sed corrupti, soluta quia deleniti delectus temporibus sint laudantium itaque 
                  vitae accusantium similique. Ipsa eum assumenda eius non ad fuga maxime perspiciatis 
                  temporibus sed obcaecati! Voluptas, dicta molestias.
-            </p>
+            </p> */}
+            <div className='profile-card-container'>
+              {profileCardInfo.map(info => {
+                 return <ProfileCard infoId={info.id} infoFName={info.first_name}
+                    infoLName={info.last_name} infoSummary={info.summary} infoResume={info.resume_link}
+                    infoGithub={info.github_link} />
+              })}
+            </div>
         </div>
+
+        
     </div>
   )
 }
