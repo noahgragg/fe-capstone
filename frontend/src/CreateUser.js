@@ -31,8 +31,9 @@ const CreateUser = (props) => {
   }
 
   return (
-    <div className='newUserContainer'>
-      <h1>CREATE USER PAGE</h1>
+    <div className='newUserPage'>
+      <div className='newUserContainer'>
+      <h1 className='newUserContainerTitle'>CREATE USER</h1>
       <form>
         <input type='text' className='newUserInput'placeholder='username' name='username' onChange={recordNewUserToBeAdded}  required value={newUserToBeAdded.username}></input>
         <input type='text' className='newUserInput'placeholder='first name' name='first_name' onChange={recordNewUserToBeAdded} required value={newUserToBeAdded.first_name}></input>
@@ -42,6 +43,7 @@ const CreateUser = (props) => {
         <input type='text' className='newUserInput'placeholder='github link' name='github_link' onChange={recordNewUserToBeAdded} required value={newUserToBeAdded.github_link}></input>
         <button className='addNewUserButton' onClick={()=>{submitNewUser()}}>Create New User</button>
       </form>
+      </div>
     </div>
   );
 };
