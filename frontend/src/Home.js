@@ -40,7 +40,8 @@ const Home = ({profileCardInfo}) => {
               {profileCardInfo.map(info => {
                  return <ProfileCard infoId={info.id} infoFName={info.first_name}
                     infoLName={info.last_name} infoSummary={info.summary} infoResume={info.resume_link}
-                    infoGithub={info.github_link} />
+                    infoGithub={info.github_link} 
+                    infoImage={info.profile_image}/>
               })}
             </div>
         </div>
