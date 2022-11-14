@@ -6,7 +6,7 @@ const Home = ({profileCardInfo}) => {
     <div className='home-container'>
         <div className='home-body'>
             <div className='h1-div'>
-              <h1 className='home-body-h1-1'>Meet your next&nbsp;</h1><h1 className='home-body-h1-2'>Software Enginner</h1>
+              <h1 className='home-body-h1-1'>Meet your next&nbsp;</h1><h1 className='home-body-h1-2'>Software Engineer</h1>
             </div>
 
             {/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora itaque 

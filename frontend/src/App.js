@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './Header';
+import NavBar from './NavBar';
 import Home from './Home';
 import CreateUser from './CreateUser';
 import LogIn from './LogIn';
@@ -21,17 +22,19 @@ const App = () => {
       fetch(`${url}/api/data`)
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data)) 
-      console.log(profileCardInfo); 
+      .then(console.log(profileCardInfo)); 
 
   
   }, [])
 
   return (
     <div className="App">
+      <NavBar />
       <Header />
       <div className='below-header'></div>
       <div>
         <Routes>
+        <Route path='/' element={<Home profileCardInfo={profileCardInfo}/>} />
           <Route path='/home' element={<Home profileCardInfo={profileCardInfo}/>} />
           <Route path='/create-user' element={<CreateUser />} />
         </Routes>
