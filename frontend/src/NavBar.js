@@ -12,7 +12,7 @@ const NavBar = (props) => {
             <div className='nav-bar-login'>
                 <Link id='nav-link' to='./create-user'>Create User</Link>
                 <div className='spacer'>|</div>
-                render(<Login />)
+                <Login/>
             </div>
         </div>   
   )

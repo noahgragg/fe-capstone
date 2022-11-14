@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap-modal';
+import Modal from 'react-bootstrap/Modal';
 
 function LogIn(props) {
   const [show, setShow] = useState(false);
