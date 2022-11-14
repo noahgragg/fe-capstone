@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import Home from './Home';
 import CreateUser from './CreateUser';
 import LogIn from './LogIn';
+import AboutSite from './AboutSite';
 
 const url = 'http://localhost:8000';
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
         <Route path='/' element={<Home profileCardInfo={profileCardInfo}/>} />
           <Route path='/home' element={<Home profileCardInfo={profileCardInfo}/>} />
           <Route path='/create-user' element={<CreateUser />} />
+          <Route path='/about' element={<AboutSite />} />
         </Routes>
       </div>
     </div>
