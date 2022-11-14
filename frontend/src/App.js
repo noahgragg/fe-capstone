@@ -36,7 +36,7 @@ const App = () => {
         <Routes>
         <Route path='/' element={<Home profileCardInfo={profileCardInfo}/>} />
           <Route path='/home' element={<Home profileCardInfo={profileCardInfo}/>} />
-          <Route path='/create-user' element={<CreateUser />} />
+          <Route path='/create-user' element={<CreateUser profileCardInfo={profileCardInfo}/>} />
         </Routes>
       </div>
     </div>
