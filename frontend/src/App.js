@@ -22,7 +22,7 @@ const App = () => {
       fetch(`${url}/api/data`)
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data)) 
-      console.log(profileCardInfo); 
+      .then(console.log(profileCardInfo)); 
 
   
   }, [])
