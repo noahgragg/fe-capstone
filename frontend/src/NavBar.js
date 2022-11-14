@@ -4,7 +4,8 @@ import { FaHome } from 'react-icons/fa';
 import Login from './LogIn.js'
 import { HiInformationCircle } from 'react-icons/hi'
 
-const NavBar = (props) => {
+
+const NavBar = () => {
   return (
         <div className='nav-bar'>
             <div className='nav-bar-home'>
@@ -14,7 +15,7 @@ const NavBar = (props) => {
             <div className='nav-bar-login'>
                 <Link id='nav-link' to='./create-user'>Create User</Link>
                 <div className='spacer'>|</div>
-                <Login/>
+                <LogIn/>
             </div>
         </div>   
   )
