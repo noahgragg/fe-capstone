@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
+import Login from './LogIn.js'
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
         <div className='nav-bar'>
             <div className='nav-bar-home'>
@@ -11,7 +12,7 @@ const NavBar = () => {
             <div className='nav-bar-login'>
                 <Link id='nav-link' to='./create-user'>Create User</Link>
                 <div className='spacer'>|</div>
-                <Link id='nav-link' to='./login'>Login</Link>
+                <Login/>
             </div>
         </div>   
   )
