@@ -5,6 +5,7 @@ module.exports = {
     },
     dev: {
         connectionString: 'postgres://postgres:postgrespw@localhost:49153/capstone_data',
+        //'postgresql://postgres:docker@127.0.0.1:5432/capstone_data' - everyone but Brandon
         port: 8000 //PORT GOES HERE
     }
 }
