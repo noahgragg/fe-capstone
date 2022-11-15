@@ -63,7 +63,7 @@ const Project = ({projName, projDesc, projLink}) => {
     </div><br />
     <div className='project-descript'>
 
-      <p>{projDesc}. Please check out my <a className='project-link' href={projLink}> Github Repo Here </a>for more details.</p>
+      <p>{projDesc}. Please check out my project <a className='project-link' href={projLink}>Here</a> for more details.</p>
     </div>
     {/* <div className='project-link'>
       <h3>project link</h3>

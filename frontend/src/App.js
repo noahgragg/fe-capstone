@@ -38,10 +38,11 @@ const App = () => {
       <div className='below-header'></div>
       <div>
         <Routes>
-        <Route path='/' element={<Home profileCardInfo={profileCardInfo}/>} />
+          <Route path='/' element={<Home profileCardInfo={profileCardInfo} setCurrentUserId={setCurrentUserId}/>} />
           <Route path='/home' element={<Home profileCardInfo={profileCardInfo} setCurrentUserId={setCurrentUserId}/>} />
           <Route path='/create-user' element={<CreateUser />} />
           <Route path='/home/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
+          <Route path='/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
         </Routes>
       </div>
     </div>
