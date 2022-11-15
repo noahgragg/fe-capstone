@@ -22,3 +22,9 @@ Content-Type: application/json
     "username": "HaliBali",
     "password": "password"
 }
+
+
+//request on API server to for authorization of user
+
+GET http://localhost:3002/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9lIiwiaWF0IjoxNjY4NTQxNTEzLCJleHAiOjE2Njg1NDE1Mjh9.pkTyrIsKdYFrz4EvXPeTPg9FaqJykMwmgoGpicuwcw4
