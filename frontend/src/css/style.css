@@ -7,6 +7,9 @@ body {
     width: 100vw;
     height: 100vh;
     margin: auto;
+    background-image: url('tech_background.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
 }
 
     /* HEADER and NAVBAR STYLING */
@@ -38,8 +41,8 @@ body {
 }
 .nav-bar-home {
     display: flex;
-    /* justify-content: flex-start;
-    align-items: flex-end;   */
+    justify-content: flex-center;
+    align-items: center;   
     /* margin-left: 15px; */
 }
 .nav-bar-login {
@@ -54,13 +57,30 @@ body {
 #nav-link {
     text-decoration: none;
     font-size: 2rem;
-    
 }
+
+#nav-manage-profile {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+#nav-manage-profile:link {
+    color: white;
+}
+#nav-manage-profile:visited {
+    color: white;
+}
+#nav-manage-profile:hover {
+    color: grey;
+}
+
 #nav-link:link {
     color: white;
 }
 #nav-link:visited {
     color: white;
+}
+#nav-link:hover {
+    color: grey;
 }
 
     /* HOME PAGE STYLING */
@@ -70,8 +90,9 @@ body {
     flex-direction: column;
     align-items: center;
     /* background-color: rgb(166, 176, 176); */
-    background-image: url('tech_background.jpg');
+    /* background-image: url('tech_background.jpg');
     background-repeat: repeat;
+    background-attachment: fixed; */
     /* background-repeat: repeat-y; */
     height: 100vh;
 }
@@ -79,6 +100,7 @@ body {
     width: 80%;
     margin-top: 50px;
     background-color: black;
+    border: 4px solid grey;
     color: grey;
     padding: 20px;
     max-width: 1080px;
@@ -104,6 +126,7 @@ body {
     /* margin-bottom: 50px; */
     /* width: 90%; */
 }
+
 .profile-container {
     display: flex;
     justify-content: flex-start;
@@ -113,8 +136,8 @@ body {
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 50px;
-    width: 300px;
-    height: 550px;
+    width: 225px;
+    height: 500px;
 }
 .profile-name {
     display: flex;
@@ -131,15 +154,110 @@ body {
     font-size: 1.1rem;
 }
 .profile-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    height: 230px;
     width: 180px;
 }
 .profile-summary-h4 {
     color: white;
 }
 .profile-links {
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
+.profile-link {
+    color: white;
+}
+.profile-link:visited {
+    color: white;
+}
+.profile-link:hover {
+    color: grey;
+}
+
+    /* MANAGE PROFILE STYLING */
+    .user-profile-container {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        /* background-color: rgb(166, 176, 176); */
+        /* background-image: url('tech_background.jpg');
+        background-repeat: repeat; */
+        /* background-repeat: repeat-y; */
+        height: 100vh;
+    }
+    .user-profile-body {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin-top: 50px;
+        background-color: black;
+        border: 3px solid grey;
+        color: grey;
+        padding: 20px;
+        max-width: 1080px;
+    }
+    /* .manage-profile-info {
+        
+    } */
+    .user-profile-summary {
+        width: 200px;
+        padding: 10px;
+    }
+    .user-profile-projects {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 700px;
+    }
+    .project-container {
+        border: 4px solid rgb(16, 50, 20);
+        padding: 15px;
+        margin-bottom: 25px;
+        width: 700px;
+    }
+    .project-link {
+        color:rgb(102, 238, 95);
+    }
+    .project-link:hover {
+        color:rgb(36, 149, 34);
+    }
+    .resume-link {
+        color:rgb(71, 124, 215);
+    }
+    .resume-link:hover {
+        color:rgb(41, 82, 170);
+    }
+    .linked-link {
+        color:rgb(71, 124, 215);
+    }
+    .linked-link:hover {
+        color:rgb(41, 82, 170);
+    }
+
+        /* MANAGE PROFILE MODAL STYLING */
+/* .modal-background {
+    height: 300px;
+    width: 500px;
+    background-color: grey;
+    opacity: .9;
+} */
+
+.modal-container {
+    position: absolute;
+    top: 25%;
+    height: 200px;
+    width: 500px;
+    color: black;
+    opacity: 1;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
 
 .about-container {
     display: flex;
