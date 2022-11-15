@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import NavBar from './NavBar';
 import Home from './Home';
 import CreateUser from './CreateUser';
 import LogIn from './LogIn';
+import UserProfile from './UserProfile';
 
 const url = 'http://localhost:8000';
 const App = () => {
 
+  const [currentUserId, setCurrentUserId] = useState(null);
+  console.log(currentUserId);
   const [profileCardInfo, setProfileCardInfo] = useState([{
     user_id: 0,
     username: '',
@@ -35,8 +39,9 @@ const App = () => {
       <div>
         <Routes>
         <Route path='/' element={<Home profileCardInfo={profileCardInfo}/>} />
-          <Route path='/home' element={<Home profileCardInfo={profileCardInfo}/>} />
+          <Route path='/home' element={<Home profileCardInfo={profileCardInfo} setCurrentUserId={setCurrentUserId}/>} />
           <Route path='/create-user' element={<CreateUser />} />
+          <Route path='/home/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
         </Routes>
       </div>
     </div>

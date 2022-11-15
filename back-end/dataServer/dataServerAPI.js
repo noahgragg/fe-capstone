@@ -22,6 +22,7 @@ app.get('/api/data', (req, res) => { //gets all user data to populate home page
 
 app.get('/api/data/:userId', (req, res) => { //get specific user
     let userId = req.params['userId'];
+    
     pool.query(`SELECT * FROM users WHERE user_id=${userId}`)
     .then(result => {
         res.send(result.rows)
@@ -30,6 +31,7 @@ app.get('/api/data/:userId', (req, res) => { //get specific user
 
 app.get('/api/data/:userId/project', (req, res) => { //pulls all profile info for specific user
     let userId = req.params['userId'];
+    console.log(userId);
     pool.query(`SELECT * FROM projects WHERE user_id=${userId}`)
     .then(result => {
         res.send(result.rows)

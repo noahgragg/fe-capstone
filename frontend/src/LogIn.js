@@ -23,7 +23,7 @@ function LogIn(props) {
   return (
    <>
         <Button variant='outline-dark' onClick={handleShow}>Login</Button>
-
+        
         <Modal 
         show={show}
         onHide={handleClose}
@@ -49,7 +49,7 @@ function LogIn(props) {
              />
              <button 
              className='btn btn-outline-primary'
-             onClick={togglePassword}>
+             onClick={togglePassword}>Login
               { passwordType ==="password" ? <i className="bi bi-eye-slash"></i> : <i className='bi bi-eye'></i>}
              </button>
           </Modal.Body>
