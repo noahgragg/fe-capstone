@@ -1,4 +1,5 @@
 import React from 'react';
+import UploadPhoto from './UploadPhoto';
 // import { Link } from 'react-router-dom';
 // import { FaHome } from 'react-icons/fa';
 
@@ -14,6 +15,7 @@ const Header = () => {
                 <Link id='nav-link' to='./login'>Login</Link>
             </div>
         </div>    */}
+        <UploadPhoto/>
     </div>
   )
 }

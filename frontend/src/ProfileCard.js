@@ -8,7 +8,7 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub}) => {
     
       <div className='profile-container'>
         <div className='profile-img'>
-          <img src={profile_img} width='200px'/>
+          <img src='https://s3.amazonaws.com/fe-capstone-bucket/IMG_0023.JPG' width='200px'/>
         </div>
         <div className='profile-name'>
           <h3>{infoFName} {infoLName}</h3>&nbsp;&nbsp;
