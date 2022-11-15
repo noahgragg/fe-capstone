@@ -8,6 +8,8 @@ import CreateUser from './CreateUser';
 import LogIn from './LogIn';
 import UserProfile from './UserProfile';
 import { ManageProfile } from './ManageProfile';
+import AboutSite from './AboutSite';
+
 
 const url = 'http://localhost:8000';
 const App = () => {
@@ -45,6 +47,7 @@ const App = () => {
           <Route path='/home/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
           <Route path='/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
           <Route path='/manage-profile' element={<ManageProfile loggedInUserId={loggedInUserId}/>} />
+          <Route path='/about' element={<AboutSite />} />
         </Routes>
       </div>
     </div>

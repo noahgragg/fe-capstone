@@ -21,7 +21,8 @@ const Home = ({profileCardInfo, setCurrentUserId}) => {
               {profileCardInfo.map(info => {
                  return <ProfileCard infoId={info.user_id} infoFName={info.first_name}
                     infoLName={info.last_name} infoSummary={info.summary} infoResume={info.resume_link}
-                    infoGithub={info.github_link} setCurrentUserId={setCurrentUserId}/>
+                    infoGithub={info.github_link} setCurrentUserId={setCurrentUserId}
+                    infoImage={info.profile_image} />
               })}
             </div>
         </div>

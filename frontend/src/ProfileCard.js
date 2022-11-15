@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import profile_img from './css/profile_img.jpg';
 import { FaLinkedin, FaGithub, FaLink } from 'react-icons/fa';
 
-const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoId, setCurrentUserId}) => {
+
+const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, infoId, setCurrentUserId}) => {
   
   return (
       
         <div className='profile-container'>
           <div className='profile-img'>
-            <img src={profile_img} width='200px'/>
+            <img src={infoImage ? `https://fe-capstone-bucket.s3.us-east-2.amazonaws.com/${infoImage}` : profile_img} width='200px'/>
           </div>
           <div className='profile-name'>
             <h3>{infoFName} {infoLName}</h3>&nbsp;&nbsp;
@@ -25,13 +26,6 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoId, set
                 className='profile-link' to='./user-profile'>View Profile</Link>
             </div>
           </div>
-        </div>
-        
-      
-      
-        
-  
-    
   )
 }
 

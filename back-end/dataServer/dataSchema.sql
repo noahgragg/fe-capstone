@@ -8,7 +8,8 @@ CREATE TABLE users (
     last_name varchar (40),
     summary text,
     resume_link varchar(100),
-    github_link varchar (100)
+    github_link varchar (100),
+    profile_image text
 );
 
 CREATE TABLE projects (
