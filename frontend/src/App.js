@@ -7,12 +7,13 @@ import Home from './Home';
 import CreateUser from './CreateUser';
 import LogIn from './LogIn';
 import UserProfile from './UserProfile';
+import { ManageProfile } from './ManageProfile';
 
 const url = 'http://localhost:8000';
 const App = () => {
 
+  const [loggedInUserId, setLoggedInUserId] = useState(1);
   const [currentUserId, setCurrentUserId] = useState(null);
-  console.log(currentUserId);
   const [profileCardInfo, setProfileCardInfo] = useState([{
     user_id: 0,
     username: '',
@@ -43,6 +44,7 @@ const App = () => {
           <Route path='/create-user' element={<CreateUser />} />
           <Route path='/home/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
           <Route path='/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
+          <Route path='/manage-profile' element={<ManageProfile loggedInUserId={loggedInUserId}/>} />
         </Routes>
       </div>
     </div>

@@ -65,9 +65,6 @@ const Project = ({projName, projDesc, projLink}) => {
 
       <p>{projDesc}. Please check out my project <a className='project-link' href={projLink}>Here</a> for more details.</p>
     </div>
-    {/* <div className='project-link'>
-      <h3>project link</h3>
-    </div> */}
   </div>
   )
 }

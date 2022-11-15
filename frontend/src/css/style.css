@@ -238,4 +238,24 @@ body {
         color:rgb(41, 82, 170);
     }
 
+        /* MANAGE PROFILE MODAL STYLING */
+/* .modal-background {
+    height: 300px;
+    width: 500px;
+    background-color: grey;
+    opacity: .9;
+} */
+
+.modal-container {
+    position: absolute;
+    top: 25%;
+    height: 200px;
+    width: 500px;
+    color: black;
+    opacity: 1;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
 

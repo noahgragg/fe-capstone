@@ -8,7 +8,7 @@ const NavBar = (props) => {
         <div className='nav-bar'>
             <div className='nav-bar-home'>
                 <Link id='nav-link' to='./home'><FaHome /></Link>&nbsp;&nbsp; 
-                {/* <Link id='nav-manage-profile' to='./manage-profile'>Manage Profile</Link> */}
+                <Link id='nav-manage-profile' to='./manage-profile'>Manage Profile</Link>
             </div>
             <div className='nav-bar-login'>
                 <Link id='nav-link' to='./create-user'>Create User</Link>
