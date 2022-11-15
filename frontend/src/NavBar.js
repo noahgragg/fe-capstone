@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
-import Login from './LogIn.js'
+import LogIn from './LogIn.js'
 import { HiInformationCircle } from 'react-icons/hi'
 
 

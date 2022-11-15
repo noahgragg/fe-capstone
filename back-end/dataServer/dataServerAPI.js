@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
 const cors = require('cors')
 const {Pool} = require('pg');
 const config = require('./dataServerConfig')[process.env.NODE_ENV||"dev"]
@@ -141,6 +142,55 @@ app.patch('/api/project/:id', (req, res) => {
         res.send(`404 ERROR: bad input please provide all input fields: project_name|project_link|project_desc|user_id|project_id`)
     }    
 });
+
+// Get username and passwords for all users ADMIN 
+app.get('/users/credentials', (req, res)=>{
+    pool.query('SELECT * FROM login_credentials;')
+    .then(result => {
+        res.send(result.rows)
+    })
+})
+
+// create username and password route 
+app.post('/user/create', async(req,res)=>{
+    try{
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        console.log(hashedPassword)
+        const user = {username: req.body.username, password: hashedPassword}
+        pool.query(`INSERT INTO login_credentials (username, password) VALUES ($1, $2)`, [user.username, user.password])
+        res.status(201).send(`user successfully added to database`)
+    }catch{
+        res.status(500).send('error creating new user')
+    }
+})
+
+// allow user to login by verifying credentials input on FE with Database
+app.post('/user/login', async (req,res)=>{
+   
+      let results = await pool.query(`SELECT * FROM login_credentials WHERE username = '${req.body.username}'`)
+           if(results.rows.length == 0){
+               res.status(400); 
+               res.send(`User doesn't exist in the database`);
+               return;
+           }
+               const user = results.rows
+               console.log(user[0].password)
+               console.log(req.body.password)
+               try{
+                   if(await bcrypt.compare(req.body.password, user[0].password)){
+                       // Needs more input back to client side to change state of FE to use authorization being logged in
+                       res.status(201).send('success')
+                   }else {
+                       res.send('Not allowed / incorrect password')
+                   }
+               }catch{
+                   res.status(500).send('error passwords issue')
+               }
+        })
+
+
+
+
 
 app.listen(PORT, function() {
     console.log(`Server is running on ${PORT}`)
