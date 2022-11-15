@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import profile_img from './css/profile_img.jpg';
+import profile_img from './css/profile_img.jpg';
 import { FaLinkedin, FaGithub, FaLink } from 'react-icons/fa';
-// import profileImage from {infoImage}
+
 
 const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage}) => {
-  console.log(infoImage)
   return (
     
       <div className='profile-container'>
         <div className='profile-img'>
-          <img src={`${infoImage}`} width='200px'/>
+          <img src={infoImage ? `https://fe-capstone-bucket.s3.us-east-2.amazonaws.com/${infoImage}` : profile_img} width='200px'/>
         </div>
         <div className='profile-name'>
           <h3>{infoFName} {infoLName}</h3>&nbsp;&nbsp;
