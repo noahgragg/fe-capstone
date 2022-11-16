@@ -1,0 +1,24 @@
+//request on dataAPI server to for authorization of user
+
+GET http://localhost:8000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9lIiwiaWF0IjoxNjY4NTQxNTEzLCJleHAiOjE2Njg1NDE1Mjh9.pkTyrIsKdYFrz4EvXPeTPg9FaqJykMwmgoGpicuwcw4
+
+###
+
+//request for token on user login
+POST http://localhost:7000/user/login 
+Content-Type: application/json
+
+{
+    "username": "joseph.t.low@gmail.com"
+}
+
+### 
+
+//request for user to refresh token
+POST http://localhost:7000/token 
+Content-Type: application/json 
+
+{
+    "token": 
+}

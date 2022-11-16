@@ -26,6 +26,7 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, 
                 className='profile-link' to='./user-profile'>View Profile</Link>
             </div>
           </div>
+        </div>
   )
 }
 
