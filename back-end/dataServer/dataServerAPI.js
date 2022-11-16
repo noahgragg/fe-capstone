@@ -145,6 +145,8 @@ app.patch('/api/project/:id', (req, res) => {
     }    
 });
 
+////////////USER LOGIN SECTION////////////////
+
 // Get username and passwords for all users ADMIN 
 app.get('/users/credentials', (req, res)=>{
     pool.query('SELECT * FROM login_credentials;')
