@@ -44,9 +44,9 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
       username: usernameInput,
       password: passwordInput
     }
-
+    
+    //function to fetch to authentication API to retrieve userToken
     function requestAccessToken(){
-      //fetch to authentication API to retrieve userToken
       fetch('http://localhost:7000/user/login/token', {
         method: 'POST',
         headers: {
