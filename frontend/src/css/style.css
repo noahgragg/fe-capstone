@@ -47,8 +47,9 @@ body {
 }
 .nav-bar-login {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 250px;
+    margin-right: 15px;
 }
 .spacer {
     color: white;

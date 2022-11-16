@@ -6,18 +6,27 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
-function LogIn(props) {
+function LogIn({loggedInUsername, setLoggedInUsername}) {
+  const [userName, setUserName]= useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
     setPasswordInput('');
   }
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    if(!loggedIn){
+      setShow(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }
 
     const [usernameInput, setUsernameInput] = useState('');
     const [passwordType, setPasswordType] = useState("password");
-    const [passwordInput, setPasswordInput] = useState("")
-    console.log('pass, username', passwordInput, usernameInput)
+    const [passwordInput, setPasswordInput] = useState("");
+
+    // console.log('pass, username', passwordInput, usernameInput)
     const handleUsernameChange = (e) => {
       setUsernameInput(e.target.value)
     }
@@ -38,23 +47,38 @@ function LogIn(props) {
 
     //POST ROUTE for USERNAME/PASSWORD//
     const loginPost = () => {
-        fetch('http://localhost:8000/user/create', {
+      if(!loggedIn){
+        fetch('http://localhost:8000/user/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(loginInfo)
         })
-        .then(data => {
-          console.log('Success', data);
+        .then(res => res.json())
+        .then((data) => {
+          setUserName(data.username);
         })
+        .then(()=>{
+          console.log('logged in username: ', userName);
+          if(loginInfo.username === userName){
+            handleClose();
+            setLoggedIn(true);
+          }
+        });
+        setLoggedInUsername(userName);
+        
+      } else {
+        //LOG OUT STUFF WOULD GO HERE for clicking 'LOG OUT'
+      }
     }
     
 
 
   return (
     <>
-      <Button variant='outline-light' onClick={handleShow}>Login</Button>
+      <Button variant='outline-light' 
+        onClick={handleShow}>{!loggedIn ? 'Log in' : 'Log out'}</Button>
 
       <Modal
         show={show}
@@ -73,7 +97,7 @@ function LogIn(props) {
                   <Form.Label>Username</Form.Label>
                   <Form.Control
                     className='username'
-                    placeholder='Username...'
+                    placeholder='Email...'
                     type='text'
                     onChange={handleUsernameChange}
                   />
@@ -98,8 +122,9 @@ function LogIn(props) {
           {/* i className="fas fa-eye-slash"></i> : <i className='fas fa-eye'></i> */}
         </Modal.Body>
         <Modal.Footer>
+          Not a user?
           <Link onClick={handleClose} to='./create-user'>Create account</Link>
-          <Button variant="outline-dark" onClick={loginPost}>Login</Button>
+          <Button variant="outline-dark" onClick={loginPost}>Log in</Button>
           <Button variant="outline-secondary" onClick={handleClose}>
             Close
           </Button>
