@@ -2,13 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const cors = require('cors');
-const {Pool}=require('pg'); 
 const config = require('./authServerConfig.js')[process.env.NODE_ENV||"dev"]
 const PORT = config.port
-const pool = new Pool({
-    connectionString: config.connectionString
-});
+
 
 const jwt = require ('jsonwebtoken');
 
