@@ -32,7 +32,7 @@ app.get('/api/data/:userId', (req, res) => { //get specific user
 
 app.get('/api/data/:userId/project', (req, res) => { //pulls all profile info for specific user
     let userId = req.params['userId'];
-    console.log(userId);
+    //console.log(userId);
     pool.query(`SELECT * FROM projects WHERE user_id=${userId}`)
     .then(result => {
         res.send(result.rows)
@@ -58,7 +58,19 @@ app.post('/api/data', (req,res)=>{
             res.send(`404 ERROR: bad input please provide all input fields: username|first_name|last_name|summary|resume_link|github_link`)
         }
 });
-
+app.patch('/api/data/photo', (req, res)=> {
+    let { image, username } = req.body
+    console.log(req.body)
+    pool.query(`UPDATE users SET profile_image='https://fe-capstone-bucket.s3.us-east-2.amazonaws.com/${image}' WHERE username='${username}';`)
+    .then(results => {
+        res.status(201)
+        res.send('Added image URL to database')
+    })
+    .catch(err=>{
+        res.status(404)
+        console.log(err)
+    })
+})
 // update user data to the data base
 app.patch('/api/data/:id', (req,res)=>{
     let {username, first_name, last_name, summary, resume_link, github_link} = req.body; 

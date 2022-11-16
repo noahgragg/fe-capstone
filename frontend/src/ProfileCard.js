@@ -5,12 +5,12 @@ import { FaLinkedin, FaGithub, FaLink } from 'react-icons/fa';
 
 
 const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, infoId, setCurrentUserId}) => {
-  
+
   return (
       
         <div className='profile-container'>
           <div className='profile-img'>
-            <img src={infoImage ? `https://fe-capstone-bucket.s3.us-east-2.amazonaws.com/${infoImage}` : profile_img} width='200px'/>
+            <img src={infoImage != 'No Image' ? infoImage : profile_img} width='200px'/>
           </div>
           <div className='profile-name'>
             <h4>{infoFName} {infoLName}</h4>&nbsp;&nbsp;
