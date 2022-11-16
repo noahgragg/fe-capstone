@@ -45,6 +45,24 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
       password: passwordInput
     }
 
+    function requestAccessToken(){
+      //fetch to authentication API to retrieve userToken
+      fetch('http://localhost:7000/user/login/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({'username':loginInfo.username})
+      })
+      .then(res => res.json())
+      .then((data) => {
+        console.log("tokenData:", data.accessToken)
+        //store user access token in local storage. 
+        localStorage.setItem("userAccessToken", data.accessToken)
+        
+      });
+    }
+
     //POST ROUTE for USERNAME/PASSWORD//
     const loginPost = () => {
       if(!loggedIn){
@@ -64,9 +82,12 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
           if(loginInfo.username === userName){
             handleClose();
             setLoggedIn(true);
+            requestAccessToken();
           }
         });
+        
         setLoggedInUsername(userName);
+        
         
       } else {
         //LOG OUT STUFF WOULD GO HERE for clicking 'LOG OUT'

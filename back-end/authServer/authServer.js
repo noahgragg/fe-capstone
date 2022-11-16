@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const cors = require('cors'); 
 const config = require('./authServerConfig.js')[process.env.NODE_ENV||"dev"]
 const PORT = config.port
 
@@ -10,7 +11,7 @@ const jwt = require ('jsonwebtoken');
 
 app.use(cors())
 app.use(express.json())
-pool.connect(); 
+
 
 
 //function that generates user access token and sets expiration timeout
@@ -20,7 +21,7 @@ function generateAccessToken(user){
 
 
 //login route 
-app.post('/user/login', (req,res)=>{
+app.post('/user/login/token', (req,res)=>{
     //Authenticate user done on dataServer API but does this need to be pulled to this API?
 
 
@@ -29,7 +30,7 @@ app.post('/user/login', (req,res)=>{
 
     const accessToken = generateAccessToken(user)
     const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
-    res.json({accessToken: accessToken, refreshToken: refreshToken})
+    res.send({accessToken: accessToken, refreshToken: refreshToken})
 })
 
 //check that the token is valid

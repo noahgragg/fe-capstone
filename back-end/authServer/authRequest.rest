@@ -6,7 +6,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9lIiwia
 ###
 
 //request for token on user login
-POST http://localhost:7000/user/login 
+POST http://localhost:7000/user/login/token 
 Content-Type: application/json
 
 {
