@@ -47,8 +47,9 @@ body {
 }
 .nav-bar-login {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 250px;
+    margin-right: 15px;
 }
 .spacer {
     color: white;
@@ -137,13 +138,14 @@ body {
     padding: 10px;
     margin-bottom: 50px;
     width: 225px;
-    height: 500px;
+    height: 560px;
 }
 .profile-name {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     color: rgb(71, 124, 215);
+    
 }
 .github {
     color: white;
@@ -158,7 +160,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center; 
-    height: 230px;
+    height: 280px;
     width: 180px;
 }
 .profile-summary-h4 {

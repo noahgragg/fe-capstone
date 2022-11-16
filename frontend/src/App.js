@@ -13,7 +13,8 @@ import AboutSite from './AboutSite';
 
 const url = 'http://localhost:8000';
 const App = () => {
-
+  const [loggedInUsername, setLoggedInUsername] = useState('');
+  console.log('logged in User: ', loggedInUsername);
   const [loggedInUserId, setLoggedInUserId] = useState(1);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [profileCardInfo, setProfileCardInfo] = useState([{
@@ -36,7 +37,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername}/>
       <Header />
       <div className='below-header'></div>
       <div>
