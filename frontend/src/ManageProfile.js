@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react';
-import profile_img from './css/profile_img.jpg';
+// import profile_img from './css/profile_img.jpg';
 import { FaEdit } from 'react-icons/fa';
-
+import UploadPhoto from './UploadPhoto';
 
 
 export const ManageProfile = ({loggedInUserId}) => {
@@ -28,12 +28,13 @@ export const ManageProfile = ({loggedInUserId}) => {
   return (
     <div className='user-profile-container'>
       <div className='user-profile-body'>
-        <div clasName='user-profile-info'>
+        <div className='user-profile-info'>
           <div className='user-profile-name'>
             <h2>{manageUserInfo.first_name} {manageUserInfo.last_name}</h2>
           </div>
           <div className='user-profile-photo'>
-            <img src={profile_img} width='200px'/>
+            <UploadPhoto props={manageUserInfo}/>
+            {/* <img src={profile_img} width='200px'/> */}
           </div>
           <div className='user-profile-summary'>
             <p>{manageUserInfo.summary}
