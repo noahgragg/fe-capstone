@@ -8,7 +8,7 @@ POST http://localhost:8000/user/create
 Content-Type: application/json
 
 {
-    "username": "HaliBali",
+    "username": "joseph.t.low@gmail.com",
     "password": "password"
 }
 
@@ -19,12 +19,16 @@ POST http://localhost:8000/user/login
 Content-Type: application/json
 
 {
-    "username": "HaliBali",
+    "username": "joseph.t.low@gmail.com",
     "password": "password"
 }
 
-
+### 
 //request on API server to for authorization of user
 
-GET http://localhost:3002/posts
+GET http://localhost:8000/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9lIiwiaWF0IjoxNjY4NTQxNTEzLCJleHAiOjE2Njg1NDE1Mjh9.pkTyrIsKdYFrz4EvXPeTPg9FaqJykMwmgoGpicuwcw4
+
+
+### 
+//

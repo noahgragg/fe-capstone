@@ -3,15 +3,33 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Row, Col, Form } from 'react-bootstrap';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
-function LogIn(props) {
+function LogIn({loggedInUsername, setLoggedInUsername}) {
+  const [userName, setUserName]= useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    setPasswordInput('');
+  }
+  const handleShow = () => {
+    if(!loggedIn){
+      setShow(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }
 
+    const [usernameInput, setUsernameInput] = useState('');
     const [passwordType, setPasswordType] = useState("password");
-    const [passwordInput, setPasswordInput] = useState("")
+    const [passwordInput, setPasswordInput] = useState("");
+
+    // console.log('pass, username', passwordInput, usernameInput)
+    const handleUsernameChange = (e) => {
+      setUsernameInput(e.target.value)
+    }
     const handlePasswordChange = (evnt) =>{
       setPasswordInput(evnt.target.value)
     }
@@ -22,10 +40,66 @@ function LogIn(props) {
       }
       setPasswordType("password")
     }
+    let loginInfo = {
+      username: usernameInput,
+      password: passwordInput
+    }
+
+    function requestAccessToken(){
+      //fetch to authentication API to retrieve userToken
+      fetch('http://localhost:7000/user/login/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({'username':loginInfo.username})
+      })
+      .then(res => res.json())
+      .then((data) => {
+        console.log("tokenData:", data.accessToken)
+        //store user access token in local storage. 
+        localStorage.setItem("userAccessToken", data.accessToken)
+        
+      });
+    }
+
+    //POST ROUTE for USERNAME/PASSWORD//
+    const loginPost = () => {
+      if(!loggedIn){
+        fetch('http://localhost:8000/user/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(loginInfo)
+        })
+        .then(res => res.json())
+        .then((data) => {
+          setUserName(data.username);
+        })
+        .then(()=>{
+          console.log('logged in username: ', userName);
+          if(loginInfo.username === userName){
+            handleClose();
+            setLoggedIn(true);
+            requestAccessToken();
+          }
+        });
+        
+        setLoggedInUsername(userName);
+        
+        
+      } else {
+        //LOG OUT STUFF WOULD GO HERE for clicking 'LOG OUT'
+      }
+    }
+    
+
 
   return (
     <>
-      <Button variant='outline-light' onClick={handleShow}>Login</Button>
+      <Button variant='outline-light' 
+        onClick={handleShow}>{!loggedIn ? 'Log in' : 'Log out'}</Button>
 
       <Modal
         show={show}
@@ -44,9 +118,9 @@ function LogIn(props) {
                   <Form.Label>Username</Form.Label>
                   <Form.Control
                     className='username'
-                    placeholder='Username...'
+                    placeholder='Email...'
                     type='text'
-                    onChange={e => props.setUsername(e.target.value)}
+                    onChange={handleUsernameChange}
                   />
                   <Form.Label>Password</Form.Label>
                   <Form.Control
@@ -69,7 +143,9 @@ function LogIn(props) {
           {/* i className="fas fa-eye-slash"></i> : <i className='fas fa-eye'></i> */}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-dark">Login</Button>
+          Not a user?
+          <Link onClick={handleClose} to='./create-user'>Create account</Link>
+          <Button variant="outline-dark" onClick={loginPost}>Log in</Button>
           <Button variant="outline-secondary" onClick={handleClose}>
             Close
           </Button>

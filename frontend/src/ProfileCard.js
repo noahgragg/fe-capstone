@@ -13,7 +13,7 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, 
             <img src={infoImage != 'No Image' ? infoImage : profile_img} width='200px'/>
           </div>
           <div className='profile-name'>
-            <h3>{infoFName} {infoLName}</h3>&nbsp;&nbsp;
+            <h4>{infoFName} {infoLName}</h4>&nbsp;&nbsp;
             <a className='github' href={infoGithub}><FaGithub /></a>&nbsp;
             <a className='linkedin' href='#'><FaLinkedin /></a>
           </div><br />
