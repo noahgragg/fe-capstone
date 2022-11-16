@@ -3,10 +3,6 @@ import AWS from 'aws-sdk/dist/aws-sdk-react-native';
 import profile_img from './css/profile_img.jpg';
 const config = require('./awsConfig')
 
-const S3_BUCKET = config.bucket;
-const REGION = config.region;
-
-
 AWS.config.update({
     accessKeyId: config.accessKeyId,
     secretAccessKey: config.secretAccessKey
