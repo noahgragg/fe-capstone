@@ -155,6 +155,7 @@ app.get('/users/credentials', (req, res)=>{
 
 // create username and password route 
 app.post('/user/create', async(req,res)=>{
+    console.log(req.body.username, req.body.password)
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         console.log(hashedPassword)

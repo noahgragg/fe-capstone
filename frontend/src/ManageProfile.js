@@ -28,7 +28,7 @@ export const ManageProfile = ({loggedInUserId}) => {
   return (
     <div className='user-profile-container'>
       <div className='user-profile-body'>
-        <div clasName='user-profile-info'>
+        <div className='user-profile-info'>
           <div className='user-profile-name'>
             <h2>{manageUserInfo.first_name} {manageUserInfo.last_name}</h2>
           </div>
