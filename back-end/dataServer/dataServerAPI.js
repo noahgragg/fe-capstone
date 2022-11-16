@@ -41,11 +41,11 @@ app.get('/api/data/:userId/project', (req, res) => { //pulls all profile info fo
 
 // adds new user data to the data base 
 app.post('/api/data', (req,res)=>{ 
-    let {username, first_name, last_name, summary, resume_link, github_link} = req.body; 
+    let {username, first_name, last_name} = req.body; 
 
-    if(username && first_name && last_name && summary && resume_link && github_link &&
-         username.length != 0 && first_name.length != 0 && last_name.length != 0 && summary.length != 0 && resume_link.length != 0 && github_link.length != 0){
-            pool.query (`INSERT INTO users (username, first_name, last_name, summary, resume_link, github_link) VALUES ($1, $2, $3, $4, $5, $6)`, [username, first_name, last_name,summary,resume_link, github_link])
+    if(username && first_name && last_name &&
+         username.length != 0 && first_name.length != 0 && last_name.length != 0){
+            pool.query (`INSERT INTO users (username, first_name, last_name) VALUES ($1, $2, $3)`, [username, first_name, last_name])
             .then(results=>{
                 res.status(201);
                 res.send(`Added user data to database`);
@@ -157,6 +157,7 @@ app.get('/users/credentials', (req, res)=>{
 
 // create username and password route 
 app.post('/user/create', async(req,res)=>{
+    console.log(req.body.username, req.body.password)
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         console.log(hashedPassword)
@@ -170,8 +171,9 @@ app.post('/user/create', async(req,res)=>{
 
 // allow user to login by verifying credentials input on FE with Database
 app.post('/user/login', async (req,res)=>{
-   
+   console.log('login username', req.body.username)
       let results = await pool.query(`SELECT * FROM login_credentials WHERE username = '${req.body.username}'`)
+      console.log('length', results.rows.length);
            if(results.rows.length == 0){
                res.status(400); 
                res.send(`User doesn't exist in the database`);
@@ -180,10 +182,12 @@ app.post('/user/login', async (req,res)=>{
                const user = results.rows
                console.log(user[0].password)
                console.log(req.body.password)
+               console.log(user[0].username)
                try{
                    if(await bcrypt.compare(req.body.password, user[0].password)){
                        // Needs more input back to client side to change state of FE to use authorization being logged in
-                       res.status(201).send('success')
+                       res.status(201);
+                       res.send({'username': user[0].username});
                    }else {
                        res.send('Not allowed / incorrect password')
                    }
