@@ -6,7 +6,7 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
-function LogIn({loggedInUsername, setLoggedInUsername}) {
+function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLoggedInUserId}) {
   const [userName, setUserName]= useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [show, setShow] = useState(false);
@@ -19,6 +19,10 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
       setShow(true);
     } else {
       setLoggedIn(false);
+      setLoggedInUsername('')
+      setLoggedInUserId('')
+      localStorage.clear()
+      console.log("you have logged out")
     }
   }
 
@@ -50,11 +54,12 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
       .then(res=> res.json())
       .then((data)=>{
         console.log("logged in UserId data:", data)
-        localStorage.setItem("loggedInUserId", data.user_id)
+        localStorage.setItem("loggedInUserId", data[0].user_id)
+        setLoggedInUserId(data[0].user_id)
       })
     }
     //function to fetch to authentication API to retrieve userToken
-    function requestAccessToken(){
+   async function requestAccessToken(){
       fetch('http://localhost:7000/user/login/token', {
         method: 'POST',
         headers: {
@@ -69,6 +74,7 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
         localStorage.setItem("userAccessToken", data.accessToken) 
         localStorage.setItem("loggedInUserName", loginInfo.username)
         requestUserId(loginInfo.username)
+        console.log('3')
       });
     }
 
@@ -83,23 +89,27 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
           body: JSON.stringify(loginInfo)
         })
         .then(res => res.json())
-        .then((data) => {
+        .then(async(data) => {
           setUserName(data.username);
+          console.log('1')
+          console.log('logged in username: ', data.username);
+          if(loginInfo.username === data.username){
+            await requestAccessToken();
+             console.log('2')
+          }
         })
         .then(()=>{
-          console.log('logged in username: ', userName);
-          if(loginInfo.username === userName){
             handleClose();
             setLoggedIn(true);
-            requestAccessToken();
-          }
+            console.log('4')
         });
         
         setLoggedInUsername(userName);
         
-        
       } else {
+        console.log('something went wrong')
         //LOG OUT STUFF WOULD GO HERE for clicking 'LOG OUT'
+       
       }
     }
     
