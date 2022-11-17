@@ -20,6 +20,15 @@ app.get('/api/data', (req, res) => { //gets all user data to populate home page
         res.send(result.rows)
     })
 })
+//route to get userId from userName 
+app.get('/api/data/userId/:userName', (req, res)=>{
+    let userName= req.params['userName'];
+    pool.query(`SELECT user_id FROM users WHERE username = '${userName}'`)
+    .then(result=>{
+        res.send(result.rows)
+        console.log('server userId:', result.rows)
+    })
+})
 
 app.get('/api/data/:userId', (req, res) => { //get specific user
     let userId = req.params['userId'];

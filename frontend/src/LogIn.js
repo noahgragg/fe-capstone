@@ -44,7 +44,15 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
       username: usernameInput,
       password: passwordInput
     }
-    
+    // function to fetch user_id from data API
+    function requestUserId(userName){
+      fetch(`http://localhost:8000/api/data/userId/${userName}`)
+      .then(res=> res.json())
+      .then((data)=>{
+        console.log("logged in UserId data:", data)
+        localStorage.setItem("loggedInUserId", data.user_id)
+      })
+    }
     //function to fetch to authentication API to retrieve userToken
     function requestAccessToken(){
       fetch('http://localhost:7000/user/login/token', {
@@ -58,8 +66,9 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
       .then((data) => {
         console.log("tokenData:", data.accessToken)
         //store user access token in local storage. 
-        localStorage.setItem("userAccessToken", data.accessToken)
-        
+        localStorage.setItem("userAccessToken", data.accessToken) 
+        localStorage.setItem("loggedInUserName", loginInfo.username)
+        requestUserId(loginInfo.username)
       });
     }
 
