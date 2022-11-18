@@ -16,7 +16,7 @@ app.use(express.json())
 
 //function that generates user access token and sets expiration timeout
 function generateAccessToken(user){
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15m'} )
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "20m"} )
 }
 
 
