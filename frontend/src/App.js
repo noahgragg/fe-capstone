@@ -12,10 +12,9 @@ import AboutSite from './AboutSite';
 
 const url = 'http://localhost:8000';
 const App = () => {
-  let initialState = localStorage.getItem("loggedInUserId") ? localStorage.getItem("loggedInUserId"):"";
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
-  const [loggedInUserId, setLoggedInUserId] = useState(initialState);
+  const [loggedInUserId, setLoggedInUserId] = useState('');
   console.log('logged in UserId:',loggedInUserId );
   const [currentUserId, setCurrentUserId] = useState(null);
   const [profileCardInfo, setProfileCardInfo] = useState([{
