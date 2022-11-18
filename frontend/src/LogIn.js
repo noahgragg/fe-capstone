@@ -10,6 +10,10 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
   const [userName, setUserName]= useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [show, setShow] = useState(false);
+  //LOGIN CODE
+  const currentUsername = (username) => {
+    setLoggedInUsername(username);
+  }
   const handleClose = () => {
     setShow(false);
     setPasswordInput('');
@@ -76,6 +80,8 @@ function LogIn({loggedInUsername, setLoggedInUsername}) {
         .then(res => res.json())
         .then((data) => {
           setUserName(data.username);
+          currentUsername(data.username);
+
         })
         .then(()=>{
           console.log('logged in username: ', userName);

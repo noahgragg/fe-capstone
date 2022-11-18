@@ -1,7 +1,7 @@
 import React ,{useState, useRef} from 'react';
 import AWS from 'aws-sdk/dist/aws-sdk-react-native';
 import profile_img from './css/profile_img.jpg';
-const config = require('./awsConfig')
+const config = require('./awsConfig');
 
 AWS.config.update({
     accessKeyId: config.accessKeyId,
