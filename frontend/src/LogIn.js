@@ -3,13 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Row, Col, Form } from 'react-bootstrap';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLoggedInUserId}) {
   const [userName, setUserName]= useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(loggedInUserId);
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
   //LOGIN CODE
   const currentUsername = (username) => {
     setLoggedInUsername(username);
@@ -27,6 +28,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
       setLoggedInUserId('')
       localStorage.clear()
       console.log("you have logged out")
+      navigate("/home");
     }
   }
 

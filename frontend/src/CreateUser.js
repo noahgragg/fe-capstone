@@ -12,6 +12,7 @@ const CreateUser = (props) => {
     summary: '',
     resume_link:'', 
     github_link:'',
+    profile_image:'No Image'
   });
   
   const recordNewUserToBeAdded =(event)=>{
