@@ -22,7 +22,7 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
                 project_name: projData.project_name,
                 project_desc: projData.project_desc,
                 project_link: projData.project_link,
-                user_id: {loggedInUserId}
+                user_id: Number(loggedInUserId)
             })
         })
         .then(res => res.json())
@@ -46,11 +46,11 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
                 </div>
                 <div className='modal-body'>
                     <input id='proj-edit-input' type='text' placeholder='Project name...' name='project_name' 
-                    onChange={recordProject} value={projData.project_name}/><br />
+                    onChange={recordProject} value={projData.project_name} required /><br />
                     <input id='proj-edit-input' type='text' placeholder='Project link...' name='project_link' 
-                    onChange={recordProject} value={projData.project_link}/><br />
+                    onChange={recordProject} value={projData.project_link} required /><br />
                     <textarea id='proj-edit-text' type='text' placeholder='Project description...' name='project_desc' 
-                    onChange={recordProject} value={projData.project_desc}/>
+                    onChange={recordProject} value={projData.project_desc} required />
                     
                 </div>
                 <div className='modal-footer'>

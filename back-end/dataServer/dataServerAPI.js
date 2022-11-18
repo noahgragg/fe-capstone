@@ -54,7 +54,7 @@ app.post('/api/data', (req,res)=>{
 
     if(username && first_name && last_name &&
          username.length != 0 && first_name.length != 0 && last_name.length != 0){
-            pool.query (`INSERT INTO users (username, first_name, last_name) VALUES ($1, $2, $3)`, [username, first_name, last_name])
+            pool.query (`INSERT INTO users (username, first_name, last_name, profile_image) VALUES ($1, $2, $3,'No Image')`, [username, first_name, last_name])
             .then(results=>{
                 res.status(201);
                 res.send(`Added user data to database`);
@@ -83,7 +83,7 @@ app.patch('/api/data/photo', (req, res)=> {
 // update user data to the data base
 app.patch('/api/data/:id', (req,res)=>{
     let {first_name, last_name, summary, resume_link, github_link} = req.body; 
-
+console.log("request to update userdata:",req.body)
     if(first_name && last_name && summary && resume_link && github_link &&
          first_name.length != 0 && last_name.length != 0 && summary.length != 0 && resume_link.length != 0 && github_link.length != 0){
            pool.query (`UPDATE users SET first_name= $1, last_name=$2, summary=$3, resume_link=$4, github_link=$5 WHERE user_id = ${req.params.id}`, [first_name, last_name,summary,resume_link, github_link])
@@ -118,7 +118,7 @@ app.delete('/api/data/:id', (req,res)=>{
 
 //Post / Create new project 
 app.post('/api/project', (req,res)=>{
-    console.log()
+    console.log("adding project:" , req.body)
    let {project_name, project_link, project_desc, user_id} = req.body;
    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
     pool.query(`INSERT INTO projects (project_name, project_link, project_desc, user_id) VALUES ($1, $2, $3, $4)`, [project_name, project_link, project_desc, user_id])
