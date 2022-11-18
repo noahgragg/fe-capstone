@@ -1,6 +1,9 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
+const jwt = require ('jsonwebtoken');
 const cors = require('cors')
 const {Pool} = require('pg');
 const config = require('./dataServerConfig')[process.env.NODE_ENV||"dev"]
@@ -81,7 +84,7 @@ app.patch('/api/data/photo', (req, res)=> {
     })
 })
 // update user data to the data base
-app.patch('/api/data/:id', (req,res)=>{
+app.patch('/api/data/:id', authenticateToken, (req,res)=>{
     let {first_name, last_name, summary, resume_link, github_link} = req.body; 
 console.log("request to update userdata:",req.body)
     if(first_name && last_name && summary && resume_link && github_link &&
@@ -117,7 +120,7 @@ app.delete('/api/data/:id', (req,res)=>{
 });
 
 //Post / Create new project 
-app.post('/api/project', (req,res)=>{
+app.post('/api/project', authenticateToken, (req,res)=>{
     console.log("adding project:" , req.body)
    let {project_name, project_link, project_desc, user_id} = req.body;
    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
@@ -152,7 +155,7 @@ app.delete('/api/project/:id', (req,res)=>{
 });
 
 // update project by ID 
-app.patch('/api/project/:id', (req, res) => {
+app.patch('/api/project/:id', authenticateToken, (req, res) => {
     let {project_name, project_link, project_desc} = req.body;
     if(project_name && project_link && project_desc && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0){
         pool.query(`UPDATE projects SET project_name= $1, project_link=$2, project_desc=$3 WHERE project_id=${req.params.id}`, [project_name, project_link, project_desc])
@@ -227,6 +230,7 @@ function authenticateToken(req,res,next){
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err,user)=>{
         if (err) return res.sendStatus(403)
         req.user = user
+        console.log('authenticationToken: passed')
         next()
     })
 }

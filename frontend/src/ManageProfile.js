@@ -101,6 +101,7 @@ const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLin
             mode: 'cors', 
             headers: {
                 'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem("userAccessToken")}`
             },
             body: JSON.stringify({
                 project_name: manageProjData.project_name,
@@ -166,6 +167,7 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
             mode: 'cors', 
             headers: {
                 'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem("userAccessToken")}`
             },
             body: JSON.stringify({
                 first_name: manageUserInfoData.first_name,

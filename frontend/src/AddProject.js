@@ -17,6 +17,7 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem("userAccessToken")}`
             },
             body: JSON.stringify({
                 project_name: projData.project_name,
