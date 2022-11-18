@@ -22,7 +22,7 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
                 project_name: projData.project_name,
                 project_desc: projData.project_desc,
                 project_link: projData.project_link,
-                user_id: {loggedInUserId}
+                user_id: loggedInUserId
             })
         })
         .then(res => res.json())
@@ -45,11 +45,11 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
                     <h2>Add Project</h2>
                 </div>
                 <div className='modal-body'>
-                    <input id='proj-edit-input' type='text' placeholder='Project name...' name='project_name' 
+                    <input id='proj-edit-input' type='text' placeholder='Project name...' required name='project_name' 
                     onChange={recordProject} value={projData.project_name}/><br />
-                    <input id='proj-edit-input' type='text' placeholder='Project link...' name='project_link' 
+                    <input id='proj-edit-input' type='text' placeholder='Project link...' required name='project_link' 
                     onChange={recordProject} value={projData.project_link}/><br />
-                    <textarea id='proj-edit-text' type='text' placeholder='Project description...' name='project_desc' 
+                    <textarea id='proj-edit-text' type='text' placeholder='Project description...' required name='project_desc' 
                     onChange={recordProject} value={projData.project_desc}/>
                     
                 </div>

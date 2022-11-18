@@ -50,11 +50,11 @@ app.get('/api/data/:userId/project', (req, res) => { //pulls all profile info fo
 
 // adds new user data to the data base 
 app.post('/api/data', (req,res)=>{ 
-    let {username, first_name, last_name} = req.body; 
+    let {username, first_name, last_name, profile_image} = req.body; 
 
-    if(username && first_name && last_name &&
+    if(username && first_name && last_name && profile_image && 
          username.length != 0 && first_name.length != 0 && last_name.length != 0){
-            pool.query (`INSERT INTO users (username, first_name, last_name) VALUES ($1, $2, $3)`, [username, first_name, last_name])
+            pool.query (`INSERT INTO users (username, first_name, last_name, profile_image) VALUES ($1, $2, $3, $4)`, [username, first_name, last_name, profile_image])
             .then(results=>{
                 res.status(201);
                 res.send(`Added user data to database`);
@@ -118,7 +118,7 @@ app.delete('/api/data/:id', (req,res)=>{
 
 //Post / Create new project 
 app.post('/api/project', (req,res)=>{
-    console.log()
+    console.log(req.body)
    let {project_name, project_link, project_desc, user_id} = req.body;
    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
     pool.query(`INSERT INTO projects (project_name, project_link, project_desc, user_id) VALUES ($1, $2, $3, $4)`, [project_name, project_link, project_desc, user_id])
