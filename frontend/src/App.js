@@ -23,7 +23,7 @@ const App = () => {
     first_name: '',
     last_name: '',
     summary: '',
-    resume_link: '',
+    linkedIn_link: '',
     github_link: '',
     profile_image: ''
   }]);
