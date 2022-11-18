@@ -1,4 +1,4 @@
-INSERT INTO users (username, first_name, last_name, summary, resume_link, github_link, profile_image) 
+INSERT INTO users (username, first_name, last_name, summary, linkedIn_link, github_link, profile_image) 
 VALUES
 
 ('joseph.t.low@gmail.com', 'Joe', 'Low', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL', 'No resume uploaded', 'https://github.com/Lowjoejoe', './profile-images/Joe_low.jpg'),
