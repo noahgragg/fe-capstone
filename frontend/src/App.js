@@ -15,7 +15,8 @@ const url = 'http://localhost:8000';
 const App = () => {
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
-  const [loggedInUserId, setLoggedInUserId] = useState(1);
+  const [loggedInUserId, setLoggedInUserId] = useState('');
+  console.log('logged in UserId:',loggedInUserId );
   const [currentUserId, setCurrentUserId] = useState(null);
   const [profileCardInfo, setProfileCardInfo] = useState([{
     user_id: 0,
@@ -40,7 +41,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <NavBar loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername}/>
+      <NavBar loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername} loggedInUserId={loggedInUserId} setLoggedInUserId={setLoggedInUserId}/>
       <Header />
       <div className='below-header'></div>
       <div>
