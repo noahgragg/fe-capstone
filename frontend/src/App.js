@@ -13,9 +13,11 @@ import AboutSite from './AboutSite';
 
 const url = 'http://localhost:8000';
 const App = () => {
+  let initialState = localStorage.getItem("loggedInUserId") ? localStorage.getItem("loggedInUserId"):"";
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
-  const [loggedInUserId, setLoggedInUserId] = useState(1);
+  const [loggedInUserId, setLoggedInUserId] = useState(initialState);
+  console.log('logged in UserId:',loggedInUserId );
   const [currentUserId, setCurrentUserId] = useState(null);
   const [profileCardInfo, setProfileCardInfo] = useState([{
     user_id: 0,
@@ -24,20 +26,23 @@ const App = () => {
     last_name: '',
     summary: '',
     resume_link: '',
-    github_link: ''
+    github_link: '',
+    profile_image: ''
   }]);
   useEffect(() => {
       fetch(`${url}/api/data`)
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data)) 
       .then(console.log(profileCardInfo)); 
-
-  
   }, [])
+
+  // useEffect(() => {
+  //   fetch
+  // })
 
   return (
     <div className="App">
-      <NavBar loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername}/>
+      <NavBar loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername} loggedInUserId={loggedInUserId} setLoggedInUserId={setLoggedInUserId}/>
       <Header />
       <div className='below-header'></div>
       <div>

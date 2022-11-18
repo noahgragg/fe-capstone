@@ -244,17 +244,24 @@ body {
     }
 
         /* MANAGE PROFILE MODAL STYLING */
-/* .modal-background {
-    height: 300px;
-    width: 500px;
-    background-color: grey;
-    opacity: .9;
-} */
-
-.modal-container {
+.modal-title h2 {
+    color: white;
+}
+.modal-form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.proj-modal-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     position: absolute;
     top: 25%;
-    height: 200px;
+    right: 25%;
+    height: 380px;
     width: 500px;
     color: black;
     opacity: 1;
@@ -271,9 +278,94 @@ body {
 
 .modal-footer {
     margin-top: 3vh;
+    border: 3px solid rgb(125, 133, 151);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px grey;
+}
+#proj-edit-input {
+    width: 250px;
+    overflow-x: visible;
+    margin: 3px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 2px;
+}
+#proj-edit-text {
+    width: 250px;
+    height: 150px;
+    margin: 3px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 2px;
+}
+.user-modal-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    height: 450px;
+    width: 500px;
+    color: black;
+    opacity: 1;
+    background-color: rgba(20, 39, 79, 0.99);
+    border: 3px solid rgb(125, 133, 151);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px grey;
+}
+#user-edit-input {
+    width: 250px;
+    overflow-x: visible;
+    margin: 3px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 2px;
+}
+#user-edit-text {
+    width: 250px;
+    height: 150px;
+    margin: 3px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 2px;
+}
+#edit-icon {
+    font-size: 1rem;
+    color: white;
+}
+.add-project-icon {
+    font-size: 1.2rem;
+    color: white;
+}
+#manage-profile-button {
+    border: 2px solid black;
+    width: 65px;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}
+#manage-profile-button:hover {
+    background-color: grey;
+}
+#manage-profile-cancel {
+    border: 2px solid black;
+    width: 75px;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}
+#manage-profile-cancel:hover {
+    background-color: grey;
+}
+.btn-container {
+    display: flex;
+    justify-content: center;
 }
 
-
+    /* ABOUT STYLING */
 .about-container {
     display: flex;
     justify-content: flex-start;
