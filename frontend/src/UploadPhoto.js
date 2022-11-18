@@ -1,7 +1,6 @@
 import React ,{useState, useRef} from 'react';
 import AWS from 'aws-sdk/dist/aws-sdk-react-native';
 import profile_img from './css/profile_img.jpg';
-const config = require('./awsConfig');
 
 AWS.config.update({
     accessKeyId: process.env.accessKeyId,
@@ -25,7 +24,7 @@ const UploadPhoto = (props) => {
         console.log(file.name)
         const params = {
             Body: file,
-            Bucket: config.bucket,
+            Bucket: 'fe-capstone-bucket',
             Key: file.name
         };
         myBucket.putObject(params)
@@ -57,7 +56,7 @@ function uploadFilePath(fileName, userName){
       })
       .then(res => console.log(res))
       .then(() => {
-          profilePhoto = config.bucketURL + fileName})
+          profilePhoto = process.env.bucketURL + fileName})
         .then(() => {
             return setNewPhoto(newPhoto => !newPhoto)
         })
