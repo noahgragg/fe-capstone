@@ -9,7 +9,7 @@ AWS.config.update({
 
 const myBucket = new AWS.S3({
     params: { Bucket: 'fe-capstone-bucket'},
-    region: 'us-est-2',
+    region: 'us-east-2',
 })
 var profilePhoto = ''
 const UploadPhoto = (props) => {
