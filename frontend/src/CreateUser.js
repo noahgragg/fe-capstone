@@ -35,7 +35,7 @@ const CreateUser = (props) => {
   // Fetch Request to post new user to database
   const submitNewUser = (e) =>{
     if(newUsernamePwd.password === newUsernamePwd.reenter){
-    fetch('http://localhost:8000/api/data', {
+    fetch(process.env.dataURL + '/api/data', {
           method: 'POST',
           mode: 'cors',
           headers: {
@@ -47,7 +47,7 @@ const CreateUser = (props) => {
         .then((data) => {
           console.log(data);
         })
-    fetch('http://localhost:8000/user/create', {
+    fetch(process.env.dataURL + 'user/create', {
           method: 'POST',
           mode: 'cors',
           headers: {

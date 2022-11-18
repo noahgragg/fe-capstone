@@ -45,7 +45,7 @@ const UploadPhoto = (props) => {
     )
 
 function uploadFilePath(fileName, userName){
-    fetch('http://localhost:8000/api/data/photo', 
+    fetch(process.env.dataURL + '/api/data/photo', 
     {
         method: "PATCH",
         mode: "cors",

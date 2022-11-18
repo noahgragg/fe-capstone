@@ -10,7 +10,7 @@ export const ManageProfile = ({loggedInUserId}) => {
     const [openAddProj, setOpenAddProj] = useState(false);
     const [manageUserInfo, setManageUserInfo] = useState([{}]);
   useEffect(()=>{
-    fetch(`http://localhost:8000/api/data/${loggedInUserId}`)
+    fetch(process.env.dataURL + `/api/data/${loggedInUserId}`)
     .then(res => res.json())
     .then(data => {
       setManageUserInfo(data[0])
@@ -20,7 +20,7 @@ export const ManageProfile = ({loggedInUserId}) => {
 
   const [manageUserProjects, setManageUserProjects] = useState([{}]);
   useEffect(()=>{
-    fetch(`http://localhost:8000/api/data/${loggedInUserId}/project`)
+    fetch(process.env.dataURL + `/api/data/${loggedInUserId}/project`)
     .then(res => res.json())
     .then(projects => {
       setManageUserProjects(projects)
@@ -96,7 +96,7 @@ const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLin
         console.log('project name:', manageProjData.project_name)
     }
     const editProjectInfo = () => {
-        fetch(`http://localhost:8000/api/project/${projId}`, {
+        fetch(process.env.dataURL + `/api/project/${projId}`, {
             method: 'PATCH',
             mode: 'cors', 
             headers: {
@@ -162,7 +162,7 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
         console.log('project name:', manageUserInfoData)
     }
     const editUserInfo = () => {
-        fetch(`http://localhost:8000/api/data/${loggedInUserId}`, {
+        fetch(process.env.dataURL + `/api/data/${loggedInUserId}`, {
             method: 'PATCH',
             mode: 'cors', 
             headers: {

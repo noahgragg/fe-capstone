@@ -4,7 +4,7 @@ import profile_img from './css/profile_img.jpg';
 export const UserProfile = ({currentUserId}) => {
   const [currentUserInfo, setCurrentUserInfo] = useState([{}]);
   useEffect(()=>{
-    fetch(`http://localhost:8000/api/data/${currentUserId}`)
+    fetch(process.env.dataURL + `/api/data/${currentUserId}`)
     .then(res => res.json())
     .then(data => {
       setCurrentUserInfo(data[0])
@@ -14,7 +14,7 @@ export const UserProfile = ({currentUserId}) => {
 
   const [currentUserProjects, setCurrentUserProjects] = useState([{}]);
   useEffect(()=>{
-    fetch(`http://localhost:8000/api/data/${currentUserId}/project`)
+    fetch(process.env.dataURL + `/api/data/${currentUserId}/project`)
     .then(res => res.json())
     .then(projects => {
       setCurrentUserProjects(projects)

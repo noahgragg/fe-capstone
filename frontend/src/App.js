@@ -9,8 +9,6 @@ import UserProfile from './UserProfile';
 import { ManageProfile } from './ManageProfile';
 import AboutSite from './AboutSite';
 
-
-const url = 'http://localhost:8000';
 const App = () => {
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
@@ -28,7 +26,7 @@ const App = () => {
     profile_image: ''
   }]);
   useEffect(() => {
-      fetch(`${url}/api/data`)
+      fetch(process.env.dataURL + '/api/data')
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data))
   }, [])

@@ -13,7 +13,7 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
         console.log('project name:', projData.project_name)
     }
     const addProject = () => {
-        fetch('http://localhost:8000/api/project', {
+        fetch(process.env.dataURL + '/api/project', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',

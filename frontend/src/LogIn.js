@@ -56,7 +56,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     // function to fetch user_id from data API
     function requestUserId(userName){
-      fetch(`http://localhost:8000/api/data/userId/${userName}`)
+      fetch(process.env.dataURL + `/api/data/userId/${userName}`)
       .then(res=> res.json())
       .then((data)=>{
         console.log("logged in UserId data:", data)
@@ -66,7 +66,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     //function to fetch to authentication API to retrieve userToken
    async function requestAccessToken(){
-      fetch('http://localhost:7000/user/login/token', {
+      fetch(process.env.dataURL + '/user/login/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     //POST ROUTE for USERNAME/PASSWORD//
     const loginPost = () => {
       if(!loggedIn){
-        fetch('http://localhost:8000/user/login', {
+        fetch(process.env.dataURL + '/user/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
