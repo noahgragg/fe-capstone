@@ -25,16 +25,19 @@ const App = () => {
     last_name: '',
     summary: '',
     resume_link: '',
-    github_link: ''
+    github_link: '',
+    profile_image: ''
   }]);
   useEffect(() => {
       fetch(`${url}/api/data`)
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data)) 
       .then(console.log(profileCardInfo)); 
-
-  
   }, [])
+
+  // useEffect(() => {
+  //   fetch
+  // })
 
   return (
     <div className="App">

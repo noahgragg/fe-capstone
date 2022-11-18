@@ -10,6 +10,10 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
   const [userName, setUserName]= useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [show, setShow] = useState(false);
+  //LOGIN CODE
+  const currentUsername = (username) => {
+    setLoggedInUsername(username);
+  }
   const handleClose = () => {
     setShow(false);
     setPasswordInput('');
@@ -97,6 +101,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
             await requestAccessToken();
              console.log('2')
           }
+
         })
         .then(()=>{
             handleClose();

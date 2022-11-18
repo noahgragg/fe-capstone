@@ -82,14 +82,14 @@ app.patch('/api/data/photo', (req, res)=> {
 })
 // update user data to the data base
 app.patch('/api/data/:id', (req,res)=>{
-    let {username, first_name, last_name, summary, resume_link, github_link} = req.body; 
+    let {first_name, last_name, summary, resume_link, github_link} = req.body; 
 
-    if(username && first_name && last_name && summary && resume_link && github_link &&
-        username.length != 0 && first_name.length != 0 && last_name.length != 0 && summary.length != 0 && resume_link.length != 0 && github_link.length != 0){
-           pool.query (`UPDATE users SET username = $1, first_name= $2, last_name=$3, summary=$4, resume_link=$5, github_link=$6 WHERE user_id = ${req.params.id}`, [username, first_name, last_name,summary,resume_link, github_link])
+    if(first_name && last_name && summary && resume_link && github_link &&
+         first_name.length != 0 && last_name.length != 0 && summary.length != 0 && resume_link.length != 0 && github_link.length != 0){
+           pool.query (`UPDATE users SET first_name= $1, last_name=$2, summary=$3, resume_link=$4, github_link=$5 WHERE user_id = ${req.params.id}`, [first_name, last_name,summary,resume_link, github_link])
             .then(results=>{
                 res.status(201);
-                res.send(`Updated user data to data base`);
+                res.send({message:`Updated user data to data base`});
             })
             .catch(err=>{
                 console.log(err);
@@ -118,12 +118,13 @@ app.delete('/api/data/:id', (req,res)=>{
 
 //Post / Create new project 
 app.post('/api/project', (req,res)=>{
+    console.log()
    let {project_name, project_link, project_desc, user_id} = req.body;
    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
     pool.query(`INSERT INTO projects (project_name, project_link, project_desc, user_id) VALUES ($1, $2, $3, $4)`, [project_name, project_link, project_desc, user_id])
     .then(()=>{
         res.status(201)
-        res.send(`Added project to project table in capstone_data`)
+        res.send({message:`Added project to project table in capstone_data`})
     })
     .catch(err=>console.log(err))
    }else{
@@ -157,7 +158,7 @@ app.patch('/api/project/:id', (req, res) => {
         pool.query(`UPDATE projects SET project_name= $1, project_link=$2, project_desc=$3 WHERE project_id=${req.params.id}`, [project_name, project_link, project_desc])
         .then(()=>{
             res.status(201)
-            res.send(`Updated project in capstone_data`)
+            res.send({message: 'Updated project in capstone_data'});
         })
         .catch(err=>console.log(err))
     }else{
