@@ -23,8 +23,7 @@ body {
 .below-header {
     height: 10px;
     width: 100%;
-    background-color: grey;
-    /* background-color:rgb(71, 124, 215); */
+    background-color:rgb(92, 103, 125);
 }
 .nav-bar {
     display: flex;
@@ -100,8 +99,9 @@ body {
 .home-body {
     width: 80%;
     margin-top: 50px;
-    background-color: black;
-    border: 4px solid grey;
+    background-color: rgb(21, 20, 20);
+    border: 4px solid rgba(151, 157, 172, 0.902);
+    border-radius: 1vw;
     color: grey;
     padding: 20px;
     max-width: 1080px;
@@ -197,15 +197,16 @@ body {
         width: 80%;
         margin-top: 50px;
         background-color: black;
-        border: 3px solid grey;
-        color: grey;
+        border: 3px solid  rgb(125, 133, 151);
+        border-radius: 1vw;
+        color: rgb(215, 225, 229);
         padding: 20px;
         max-width: 1080px;
     }
-    .user-profile-photo h3 {
-        font-size: 1rem;
-        margin-bottom: 0;
+    .user-profile-info {
+        text-align: center;
     }
+
     .user-profile-summary {
         width: 200px;
         padding: 10px;
@@ -217,8 +218,8 @@ body {
         width: 700px;
     }
     .project-container {
-        border: 4px solid grey;
-        border-radius: 10px;
+        border: 4px solid rgb(203, 203, 202);
+        border-radius: 1vw;
         padding: 15px;
         margin-bottom: 25px;
         width: 700px;
@@ -265,6 +266,18 @@ body {
     color: black;
     opacity: 1;
     background-color: rgba(20, 39, 79, 0.99);
+    border: 3px solid rgba(125, 133, 151);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.modal-title {
+    text-align: center;
+    color: aliceblue;
+}
+
+.modal-footer {
+    margin-top: 3vh;
     border: 3px solid rgb(125, 133, 151);
     border-radius: 10px;
     box-shadow: 5px 5px 5px grey;
@@ -373,6 +386,7 @@ body {
     border: solid;
     color: aliceblue;
     font-size: 2vh;
+    padding: 3vh;
 }
 
 .about-header {
