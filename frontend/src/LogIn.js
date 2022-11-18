@@ -66,7 +66,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     //function to fetch to authentication API to retrieve userToken
    async function requestAccessToken(){
-      fetch(process.env.dataURL + '/user/login/token', {
+      fetch(process.env.authURL + '/user/login/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
