@@ -59,7 +59,7 @@ export const ManageProfile = ({loggedInUserId}) => {
               projLink={proj.project_link} userId={proj.user_id} />
           })}
             <div className='add-project-icon'>
-                {openAddProj && <AddProject openAddProj={openAddProj} setOpenAddProj={setOpenAddProj} />}
+                {openAddProj && <AddProject loggedInUserId={loggedInUserId} openAddProj={openAddProj} setOpenAddProj={setOpenAddProj} />}
                 <FaRegPlusSquare onClick={()=>{setOpenAddProj(!openAddProj)}}/> Add Project
             </div>
         </div>

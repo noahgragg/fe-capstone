@@ -118,7 +118,7 @@ app.delete('/api/data/:id', (req,res)=>{
 
 //Post / Create new project 
 app.post('/api/project', (req,res)=>{
-    console.log()
+    console.log("adding project:" , req.body)
    let {project_name, project_link, project_desc, user_id} = req.body;
    if(project_name && project_link && project_desc && user_id && project_name.length != 0 && project_link.length != 0 && project_desc.length != 0 && typeof user_id == 'number'){
     pool.query(`INSERT INTO projects (project_name, project_link, project_desc, user_id) VALUES ($1, $2, $3, $4)`, [project_name, project_link, project_desc, user_id])
