@@ -4,13 +4,13 @@ import profile_img from './css/profile_img.jpg';
 const config = require('./awsConfig');
 
 AWS.config.update({
-    accessKeyId: config.accessKeyId,
-    secretAccessKey: config.secretAccessKey
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey
 })
 
 const myBucket = new AWS.S3({
-    params: { Bucket: config.bucket},
-    region: config.region,
+    params: { Bucket: 'fe-capstone-bucket'},
+    region: 'us-est-2',
 })
 var profilePhoto = ''
 const UploadPhoto = (props) => {
