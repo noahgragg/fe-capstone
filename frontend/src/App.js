@@ -5,7 +5,6 @@ import Header from './Header';
 import NavBar from './NavBar';
 import Home from './Home';
 import CreateUser from './CreateUser';
-import LogIn from './LogIn';
 import UserProfile from './UserProfile';
 import { ManageProfile } from './ManageProfile';
 import AboutSite from './AboutSite';
@@ -32,8 +31,7 @@ const App = () => {
   useEffect(() => {
       fetch(`${url}/api/data`)
       .then(res => res.json())
-      .then((data) => setProfileCardInfo(data)) 
-      .then(console.log(profileCardInfo)); 
+      .then((data) => setProfileCardInfo(data))
   }, [])
 
   // useEffect(() => {

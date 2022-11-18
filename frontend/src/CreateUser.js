@@ -1,8 +1,4 @@
 import React, {useState} from 'react';
-import {json} from 'react-router-dom';
-
-const url = 'http://localhost:8000';
-
 const CreateUser = (props) => {
   // sets up state to be an empty object with the keys to be filled in by new user
   const[newUserToBeAdded, setNewUserToBeAdded]=useState({
