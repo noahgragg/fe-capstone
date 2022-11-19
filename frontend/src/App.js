@@ -39,7 +39,7 @@ const App = () => {
       .then((data) => setProfileCardInfo(data))
       .then( fetch(`${dataURL}/keys`)
         .then(res => res.json())
-        .then((results) => setKeys(results))
+        .then((results) => setKeys(results), console.log(results))
       )
   }, [])
 
