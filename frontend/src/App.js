@@ -9,6 +9,7 @@ import UserProfile from './UserProfile';
 import { ManageProfile } from './ManageProfile';
 import AboutSite from './AboutSite';
 const App = () => {
+  const dataURL = process.env.DATA_URL
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
   const [loggedInUserId, setLoggedInUserId] = useState('');
