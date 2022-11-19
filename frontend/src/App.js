@@ -37,10 +37,11 @@ const App = () => {
       fetch(`${dataURL}/api/data`)
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data))
-      .then( fetch(`${dataURL}/keys`)
-        .then(res => res.json())
-        .then((results) => setKeys(results), console.log(results))
-      )
+  }, [])
+  useEffect(()=>{
+    fetch(`${dataURL}/keys`)
+      .then(res => res.json())
+      .then((data) => setKeys(data), console.log(data))
   }, [])
 
   // useEffect(() => {
