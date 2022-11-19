@@ -56,7 +56,7 @@ export const ManageProfile = ({loggedInUserId, keys}) => {
           <h1>My Projects</h1><br />
           {manageUserProjects.map(proj => {
             return <ManageProject projId={proj.project_id} projName={proj.project_name} projDesc={proj.project_desc}
-              projLink={proj.project_link} userId={proj.user_id} />
+              projLink={proj.project_link} userId={proj.user_id} keys={keys}/>
           })}
             <div className='add-project-icon'>
                 {openAddProj && <AddProject loggedInUserId={loggedInUserId} openAddProj={openAddProj} setOpenAddProj={setOpenAddProj} keys={keys}/>}
@@ -68,7 +68,7 @@ export const ManageProfile = ({loggedInUserId, keys}) => {
   )
 }
 
-const ManageProject = ({projName, projDesc, projLink, projId}) => {
+const ManageProject = ({projName, projDesc, projLink, projId, keys}) => {
     const [openProjModal, setOpenProjModal] = useState(false);
   return (
   <div className='project-container'>

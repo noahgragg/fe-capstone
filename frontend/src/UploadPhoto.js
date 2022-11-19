@@ -14,7 +14,7 @@ const UploadPhoto = ({manageUserInfo, keys}) => {
         params: { Bucket: 'fe-capstone-bucket'},
         region: 'us-east-2',
     })
-    var propsPhoto = props.props.profile_image
+    var propsPhoto = manageUserInfo.profile_image
     const inputFile = useRef(null)
     const [newPhoto, setNewPhoto] = useState(false)
 
@@ -32,7 +32,7 @@ const UploadPhoto = ({manageUserInfo, keys}) => {
             .send((err) => {
                 if (err) console.log(err)
             })
-        uploadFilePath(file.name, props.props.username)
+        uploadFilePath(file.name, manageUserInfo.username)
         //return () => setNewPhoto(newPhoto => !newPhoto)
     }
     const onImgClick = () => {
