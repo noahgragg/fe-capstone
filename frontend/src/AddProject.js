@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 
 
-const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
+const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj, keys}) => {
     const [projData, setProjData] = useState({
         project_name: '',
         project_desc: '',
@@ -13,7 +13,7 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj}) => {
         console.log('project name:', projData.project_name)
     }
     const addProject = () => {
-        fetch(process.env.dataURL + '/api/project', {
+        fetch(`${keys.dataURL}/api/project`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',

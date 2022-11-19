@@ -9,7 +9,8 @@ import UserProfile from './UserProfile';
 import { ManageProfile } from './ManageProfile';
 import AboutSite from './AboutSite';
 const App = () => {
-  const dataURL = process.env.DATA_URL
+  const dataURL = 'https://dataserverapi.onrender.com'
+  
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
   const [loggedInUserId, setLoggedInUserId] = useState('');
@@ -25,11 +26,21 @@ const App = () => {
     github_link: '',
     profile_image: ''
   }]);
+  const [keys, setKeys] = useState({
+    s3AccessKey: '',
+    s3SecretKey: '',
+    bucketURL: '',
+    authURL: '',
+    dataURL: dataURL
+  })
   useEffect(() => {
-      fetch('https://dataserverapi.onrender.com/api/data')
+      fetch(`${dataURL}/api/data`)
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data))
-      .then(console.log(process.env.DATA_URL))
+      .then( fetch(`${dataURL}/keys`)
+        .then(res => res.json())
+        .then((results) => setKeys(results))
+      )
   }, [])
 
   // useEffect(() => {
@@ -38,17 +49,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <NavBar loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername} loggedInUserId={loggedInUserId} setLoggedInUserId={setLoggedInUserId}/>
+      <NavBar loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername} loggedInUserId={loggedInUserId} setLoggedInUserId={setLoggedInUserId} keys={keys}/>
       <Header />
       <div className='below-header'></div>
       <div>
         <Routes>
           <Route path='/' element={<Home profileCardInfo={profileCardInfo} setCurrentUserId={setCurrentUserId}/>} />
           <Route path='/home' element={<Home profileCardInfo={profileCardInfo} setCurrentUserId={setCurrentUserId}/>} />
-          <Route path='/create-user' element={<CreateUser />} />
-          <Route path='/home/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
-          <Route path='/user-profile' element={<UserProfile currentUserId={currentUserId}/>} />
-          <Route path='/manage-profile' element={<ManageProfile loggedInUserId={loggedInUserId}/>} />
+          <Route path='/create-user' element={<CreateUser keys={keys}/>} />
+          <Route path='/home/user-profile' element={<UserProfile currentUserId={currentUserId} keys={keys}/>} />
+          <Route path='/user-profile' element={<UserProfile currentUserId={currentUserId} keys={keys}/>} />
+          <Route path='/manage-profile' element={<ManageProfile loggedInUserId={loggedInUserId} keys={keys}/>} />
           <Route path='/about' element={<AboutSite />} />
         </Routes>
       </div>

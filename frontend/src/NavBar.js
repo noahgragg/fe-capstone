@@ -5,7 +5,7 @@ import LogIn from './LogIn.js'
 import { HiInformationCircle } from 'react-icons/hi'
 
 
-const NavBar = ({loggedInUsername, setLoggedInUsername, loggedInUserId, setLoggedInUserId}) => {
+const NavBar = ({loggedInUsername, setLoggedInUsername, loggedInUserId, setLoggedInUserId, keys}) => {
         return (
                 <div className='nav-bar'>
                     <div className='nav-bar-home'>
@@ -16,7 +16,7 @@ const NavBar = ({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogge
                     <div className='nav-bar-login'>
                         {/* <Link id='nav-link' to='./create-user'>Create User</Link>
                         <div className='spacer'>|</div> */}
-                        <LogIn loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername} loggedInUserId={loggedInUserId} setLoggedInUserId={setLoggedInUserId}/>
+                        <LogIn loggedInUsername={loggedInUsername} setLoggedInUsername={setLoggedInUsername} loggedInUserId={loggedInUserId} setLoggedInUserId={setLoggedInUserId} keys={keys}/>
                     </div>
                 </div>   
         )

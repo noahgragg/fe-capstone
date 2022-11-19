@@ -5,12 +5,12 @@ import UploadPhoto from './UploadPhoto';
 import AddProject from './AddProject';
 
 
-export const ManageProfile = ({loggedInUserId}) => {
+export const ManageProfile = ({loggedInUserId, keys}) => {
     const [openUserInfoModal, setOpenUserInfoModal] = useState(false);
     const [openAddProj, setOpenAddProj] = useState(false);
     const [manageUserInfo, setManageUserInfo] = useState([{}]);
   useEffect(()=>{
-    fetch(process.env.DATA_URL + `/api/data/${loggedInUserId}`)
+    fetch(`${keys.dataURL}/api/data/${loggedInUserId}`)
     .then(res => res.json())
     .then(data => {
       setManageUserInfo(data[0])
@@ -20,7 +20,7 @@ export const ManageProfile = ({loggedInUserId}) => {
 
   const [manageUserProjects, setManageUserProjects] = useState([{}]);
   useEffect(()=>{
-    fetch(process.env.DATA_URL + `/api/data/${loggedInUserId}/project`)
+    fetch(`${keys.dataURL}/api/data/${loggedInUserId}/project`)
     .then(res => res.json())
     .then(projects => {
       setManageUserProjects(projects)
@@ -36,11 +36,11 @@ export const ManageProfile = ({loggedInUserId}) => {
             <h2>{manageUserInfo.first_name} {manageUserInfo.last_name} <FaEdit id='edit-icon' onClick={()=>{setOpenUserInfoModal(!openUserInfoModal)}}/></h2>
           </div>
           <div className='user-profile-photo'>
-            <UploadPhoto props={manageUserInfo}/>
+            <UploadPhoto manageUserInfo={manageUserInfo} keys={keys}/>
             {/* <img src={profile_img} width='200px'/> */}
             <h3>***Click on photo to edit***</h3>
           </div>
-          {openUserInfoModal && <UserInfoModal openUserInfoModal={openUserInfoModal} setOpenUserInfoModal={setOpenUserInfoModal} manageUserInfo={manageUserInfo} loggedInUserId={loggedInUserId} />}
+          {openUserInfoModal && <UserInfoModal openUserInfoModal={openUserInfoModal} setOpenUserInfoModal={setOpenUserInfoModal} manageUserInfo={manageUserInfo} loggedInUserId={loggedInUserId} keys={keys} />}
           <div className='user-profile-summary'>
             <p>{manageUserInfo.summary}
             </p>
@@ -59,7 +59,7 @@ export const ManageProfile = ({loggedInUserId}) => {
               projLink={proj.project_link} userId={proj.user_id} />
           })}
             <div className='add-project-icon'>
-                {openAddProj && <AddProject loggedInUserId={loggedInUserId} openAddProj={openAddProj} setOpenAddProj={setOpenAddProj} />}
+                {openAddProj && <AddProject loggedInUserId={loggedInUserId} openAddProj={openAddProj} setOpenAddProj={setOpenAddProj} keys={keys}/>}
                 <FaRegPlusSquare onClick={()=>{setOpenAddProj(!openAddProj)}}/> Add Project
             </div>
         </div>
@@ -75,7 +75,7 @@ const ManageProject = ({projName, projDesc, projLink, projId}) => {
     <div className='project-name'>
       <h2 className='project-name-h2'>{projName} <FaEdit id='edit-icon' onClick={()=>{setOpenProjModal(!openProjModal)}} /></h2>
     </div><br />
-    {openProjModal && <ProjModal projId={projId} projName={projName} projDesc={projDesc} projLink={projLink} openProjModal={openProjModal} setOpenProjModal={setOpenProjModal} />}
+    {openProjModal && <ProjModal projId={projId} projName={projName} projDesc={projDesc} projLink={projLink} openProjModal={openProjModal} setOpenProjModal={setOpenProjModal} keys={keys}/>}
     <div className='project-descript'>
 
       <p>{projDesc}. Please check out my project <a className='project-link' href={projLink}>Here</a> for more details.</p>
@@ -84,7 +84,7 @@ const ManageProject = ({projName, projDesc, projLink, projId}) => {
   )
 };
 
-const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLink, projId}) => {
+const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLink, projId, keys}) => {
     const [manageProjData, setManageProjData] = useState({
         project_name: projName,
         project_desc: projDesc,
@@ -96,7 +96,7 @@ const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLin
         console.log('project name:', manageProjData.project_name)
     }
     const editProjectInfo = () => {
-        fetch(process.env.DATA_URL + `/api/project/${projId}`, {
+        fetch(`${keys.dataURL}/api/project/${projId}`, {
             method: 'PATCH',
             mode: 'cors', 
             headers: {
@@ -148,7 +148,7 @@ const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLin
     )
 }
 
-const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo, loggedInUserId}) => {
+const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo, loggedInUserId, keys}) => {
     const [manageUserInfoData, setManageUserInfoData] = useState({
         first_name: manageUserInfo.first_name,
         last_name: manageUserInfo.last_name,
@@ -162,7 +162,7 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
         console.log('project name:', manageUserInfoData)
     }
     const editUserInfo = () => {
-        fetch(process.env.DATA_URL + `/api/data/${loggedInUserId}`, {
+        fetch(`${keys.dataURL}/api/data/${loggedInUserId}`, {
             method: 'PATCH',
             mode: 'cors', 
             headers: {

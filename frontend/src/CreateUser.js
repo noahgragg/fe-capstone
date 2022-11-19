@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-const CreateUser = (props) => {
+const CreateUser = ({keys}) => {
+  //const dataURL = 'https://dataserverapi.onrender.com'
   // sets up state to be an empty object with the keys to be filled in by new user
   const[newUserToBeAdded, setNewUserToBeAdded]=useState({
     username: '',
@@ -35,7 +36,7 @@ const CreateUser = (props) => {
   // Fetch Request to post new user to database
   const submitNewUser = (e) =>{
     if(newUsernamePwd.password === newUsernamePwd.reenter){
-    fetch(process.env.DATA_URL + '/api/data', {
+    fetch(`${keys.dataURL}/api/data`, {
           method: 'POST',
           mode: 'cors',
           headers: {
@@ -47,7 +48,7 @@ const CreateUser = (props) => {
         .then((data) => {
           console.log(data);
         })
-    fetch(process.env.DATA_URL + 'user/create', {
+    fetch(`${keys.dataURL}user/create`, {
           method: 'POST',
           mode: 'cors',
           headers: {

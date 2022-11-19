@@ -2,17 +2,18 @@ import React ,{useState, useRef} from 'react';
 import AWS from 'aws-sdk/dist/aws-sdk-react-native';
 import profile_img from './css/profile_img.jpg';
 
-AWS.config.update({
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY
-})
 
-const myBucket = new AWS.S3({
-    params: { Bucket: 'fe-capstone-bucket'},
-    region: 'us-east-2',
-})
 var profilePhoto = ''
-const UploadPhoto = (props) => {
+const UploadPhoto = ({manageUserInfo, keys}) => {
+    AWS.config.update({
+        accessKeyId: keys.s3AccessKey,
+        secretAccessKey: keys.s3SecretKey
+    })
+    
+    const myBucket = new AWS.S3({
+        params: { Bucket: 'fe-capstone-bucket'},
+        region: 'us-east-2',
+    })
     var propsPhoto = props.props.profile_image
     const inputFile = useRef(null)
     const [newPhoto, setNewPhoto] = useState(false)
@@ -45,7 +46,7 @@ const UploadPhoto = (props) => {
     )
 
 function uploadFilePath(fileName, userName){
-    fetch(process.env.DATA_URL + '/api/data/photo', 
+    fetch(`${keys.dataURL}/api/data/photo`, 
     {
         method: "PATCH",
         mode: "cors",
@@ -56,7 +57,7 @@ function uploadFilePath(fileName, userName){
       })
       .then(res => console.log(res))
       .then(() => {
-          profilePhoto = process.env.BUCKET_URL + fileName})
+          profilePhoto = keys.bucketURL + fileName})
         .then(() => {
             return setNewPhoto(newPhoto => !newPhoto)
         })

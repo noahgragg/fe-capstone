@@ -6,7 +6,7 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLoggedInUserId}) {
+function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLoggedInUserId, keys}) {
   const [userName, setUserName]= useState('');
   const [loggedIn, setLoggedIn] = useState(loggedInUserId);
   const [show, setShow] = useState(false);
@@ -56,7 +56,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     // function to fetch user_id from data API
     function requestUserId(userName){
-      fetch(process.env.DATA_URL + `/api/data/userId/${userName}`)
+      fetch(`/api/data/userId/${userName}`)
       .then(res=> res.json())
       .then((data)=>{
         console.log("logged in UserId data:", data)
@@ -66,7 +66,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     //function to fetch to authentication API to retrieve userToken
    async function requestAccessToken(){
-      fetch(process.env.AUTH_URL + '/user/login/token', {
+      fetch(`${keys.authURL}/user/login/token`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     //POST ROUTE for USERNAME/PASSWORD//
     const loginPost = () => {
       if(!loggedIn){
-        fetch(process.env.DATA_URL + '/user/login', {
+        fetch(`${keys.dataURL}/user/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

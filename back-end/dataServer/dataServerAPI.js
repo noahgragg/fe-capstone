@@ -23,6 +23,15 @@ app.get('/api/data', (req, res) => { //gets all user data to populate home page
         res.send(result.rows)
     })
 })
+app.get('/keys', (req,res)=>{
+    res.json(({
+        s3AccessKey: process.env.S3_ACCESS_KEY,
+        s3SecretKey: process.env.S3_SECRET_KEY,
+        bucketURL: process.env.BUCKET_URL,
+        authURL: process.env.AUTH_URL,
+        dataURL: 'https://dataserverapi.onrender.com'
+      }))
+})
 //route to get userId from userName 
 app.get('/api/data/userId/:userName', (req, res)=>{
     let userName= req.params['userName'];
