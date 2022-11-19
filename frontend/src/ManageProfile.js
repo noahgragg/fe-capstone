@@ -78,7 +78,7 @@ const ManageProject = ({projName, projDesc, projLink, projId}) => {
     {openProjModal && <ProjModal projId={projId} projName={projName} projDesc={projDesc} projLink={projLink} openProjModal={openProjModal} setOpenProjModal={setOpenProjModal} />}
     <div className='project-descript'>
 
-      <p>{projDesc}. Please check out my project <a className='project-link' href={projLink}>Here</a> for more details.</p>
+      <p>{projDesc}. Please check out my project <a className='project-link' href={projLink}>here</a> for more details.</p>
     </div>
   </div>
   )
@@ -208,7 +208,7 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                         onChange={recordUserInfoData} value={manageUserInfoData.summary}/>
                         
                     </div>
-                    <div className='modal-footer'>
+                    <div className='update-modal-footer'>
                         <div className='btn-container'>
                             <button id='manage-profile-cancel' onClick={closeModal} type='cancel'>Cancel</button>
                             <button id='manage-profile-button' onClick={editUserInfo} type='submit'>Save</button>
