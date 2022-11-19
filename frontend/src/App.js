@@ -41,7 +41,7 @@ const App = () => {
   useEffect(()=>{
     fetch(`${dataURL}/keys`)
       .then(res => res.json())
-      .then((results) => console.log(results))
+      .then((results) => setKeys(results))
   }, [])
 
   // useEffect(() => {
