@@ -56,7 +56,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     // function to fetch user_id from data API
     function requestUserId(userName){
-      fetch(`/api/data/userId/${userName}`)
+      fetch(`${keys.dataURL}/api/data/userId/${userName}`)
       .then(res=> res.json())
       .then((data)=>{
         console.log("logged in UserId data:", data)
