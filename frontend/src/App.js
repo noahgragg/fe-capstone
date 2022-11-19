@@ -26,7 +26,7 @@ const App = () => {
     profile_image: ''
   }]);
   useEffect(() => {
-      fetch(process.env.dataURL + '/api/data')
+      fetch('https://dataserverapi.onrender.com/api/data')
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data))
   }, [])
