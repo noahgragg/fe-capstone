@@ -50,7 +50,7 @@ const CreateUser = ({keys}) => {
         .then((data) => {
           console.log(data);
         })
-    fetch(`${keys.dataURL}user/create`, {
+    fetch(`${keys.dataURL}/user/create`, {
           method: 'POST',
           mode: 'cors',
           headers: {
