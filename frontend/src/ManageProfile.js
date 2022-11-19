@@ -10,7 +10,7 @@ export const ManageProfile = ({loggedInUserId}) => {
     const [openAddProj, setOpenAddProj] = useState(false);
     const [manageUserInfo, setManageUserInfo] = useState([{}]);
   useEffect(()=>{
-    fetch(process.env.dataURL + `/api/data/${loggedInUserId}`)
+    fetch(process.env.DATA_URL + `/api/data/${loggedInUserId}`)
     .then(res => res.json())
     .then(data => {
       setManageUserInfo(data[0])
@@ -20,7 +20,7 @@ export const ManageProfile = ({loggedInUserId}) => {
 
   const [manageUserProjects, setManageUserProjects] = useState([{}]);
   useEffect(()=>{
-    fetch(process.env.dataURL + `/api/data/${loggedInUserId}/project`)
+    fetch(process.env.DATA_URL + `/api/data/${loggedInUserId}/project`)
     .then(res => res.json())
     .then(projects => {
       setManageUserProjects(projects)
@@ -96,7 +96,7 @@ const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLin
         console.log('project name:', manageProjData.project_name)
     }
     const editProjectInfo = () => {
-        fetch(process.env.dataURL + `/api/project/${projId}`, {
+        fetch(process.env.DATA_URL + `/api/project/${projId}`, {
             method: 'PATCH',
             mode: 'cors', 
             headers: {
@@ -162,7 +162,7 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
         console.log('project name:', manageUserInfoData)
     }
     const editUserInfo = () => {
-        fetch(process.env.dataURL + `/api/data/${loggedInUserId}`, {
+        fetch(process.env.DATA_URL + `/api/data/${loggedInUserId}`, {
             method: 'PATCH',
             mode: 'cors', 
             headers: {

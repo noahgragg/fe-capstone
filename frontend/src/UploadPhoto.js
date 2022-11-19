@@ -3,8 +3,8 @@ import AWS from 'aws-sdk/dist/aws-sdk-react-native';
 import profile_img from './css/profile_img.jpg';
 
 AWS.config.update({
-    accessKeyId: process.env.accessKeyId,
-    secretAccessKey: process.env.secretAccessKey
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY
 })
 
 const myBucket = new AWS.S3({
@@ -45,7 +45,7 @@ const UploadPhoto = (props) => {
     )
 
 function uploadFilePath(fileName, userName){
-    fetch(process.env.dataURL + '/api/data/photo', 
+    fetch(process.env.DATA_URL + '/api/data/photo', 
     {
         method: "PATCH",
         mode: "cors",
@@ -56,7 +56,7 @@ function uploadFilePath(fileName, userName){
       })
       .then(res => console.log(res))
       .then(() => {
-          profilePhoto = process.env.bucketURL + fileName})
+          profilePhoto = process.env.BUCKET_URL + fileName})
         .then(() => {
             return setNewPhoto(newPhoto => !newPhoto)
         })

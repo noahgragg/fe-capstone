@@ -56,7 +56,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     // function to fetch user_id from data API
     function requestUserId(userName){
-      fetch(process.env.dataURL + `/api/data/userId/${userName}`)
+      fetch(process.env.DATA_URL + `/api/data/userId/${userName}`)
       .then(res=> res.json())
       .then((data)=>{
         console.log("logged in UserId data:", data)
@@ -66,7 +66,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     }
     //function to fetch to authentication API to retrieve userToken
    async function requestAccessToken(){
-      fetch(process.env.authURL + '/user/login/token', {
+      fetch(process.env.AUTH_URL + '/user/login/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     //POST ROUTE for USERNAME/PASSWORD//
     const loginPost = () => {
       if(!loggedIn){
-        fetch(process.env.dataURL + '/user/login', {
+        fetch(process.env.DATA_URL + '/user/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
