@@ -8,7 +8,7 @@ import CreateUser from './CreateUser';
 import UserProfile from './UserProfile';
 import { ManageProfile } from './ManageProfile';
 import AboutSite from './AboutSite';
-
+const config = require('./config')[process.env.NODE_ENV||"dev"]
 const App = () => {
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
@@ -26,7 +26,7 @@ const App = () => {
     profile_image: ''
   }]);
   useEffect(() => {
-      fetch(process.env.DATA_URL + '/api/data')
+      fetch(config.dataURL + '/api/data')
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data))
   }, [])
