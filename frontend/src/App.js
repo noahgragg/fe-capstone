@@ -8,7 +8,6 @@ import CreateUser from './CreateUser';
 import UserProfile from './UserProfile';
 import { ManageProfile } from './ManageProfile';
 import AboutSite from './AboutSite';
-const config = require('./config')[process.env.NODE_ENV||"dev"]
 const App = () => {
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
@@ -26,9 +25,10 @@ const App = () => {
     profile_image: ''
   }]);
   useEffect(() => {
-      fetch(config.dataURL + '/api/data')
+      fetch('https://dataserverapi.onrender.com/api/data')
       .then(res => res.json())
       .then((data) => setProfileCardInfo(data))
+      .then(console.log(process.env.DATA_URL))
   }, [])
 
   // useEffect(() => {
