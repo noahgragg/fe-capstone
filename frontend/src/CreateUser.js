@@ -17,7 +17,7 @@ const CreateUser = ({keys}) => {
   
   const recordNewUserToBeAdded =(event)=>{
     //implement record newUser to be added
-    console.log("Record NewUser to be added:",newUserToBeAdded)
+    ("Record NewUser to be added:",newUserToBeAdded)
     setNewUserToBeAdded({...newUserToBeAdded, [event.target.name]:event.target.value});
   };
 
@@ -50,7 +50,6 @@ const CreateUser = ({keys}) => {
         })
         .then(res => res.json())
         .then((data) => {
-          console.log(data);
         })
     fetch(`${keys.dataURL}/user/create`, {
           method: 'POST',
@@ -62,7 +61,6 @@ const CreateUser = ({keys}) => {
         })
         .then(res => res.json())
         .then((data) => {
-          console.log(data)
           navigate('/home');
         })
       } else {

@@ -22,7 +22,6 @@ const UploadPhoto = ({manageUserInfo, keys}) => {
         uploadFile(e.target.files[0]);
     }
     const uploadFile = (file) => {
-        console.log(file.name)
         const params = {
             Body: file,
             Bucket: 'fe-capstone-bucket',

@@ -36,7 +36,6 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
     const [passwordType, setPasswordType] = useState("password");
     const [passwordInput, setPasswordInput] = useState("");
 
-    // console.log('pass, username', passwordInput, usernameInput)
     const handleUsernameChange = (e) => {
       setUsernameInput(e.target.value)
     }
@@ -59,7 +58,6 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
       fetch(`${keys.dataURL}/api/data/userId/${userName}`)
       .then(res=> res.json())
       .then((data)=>{
-        console.log("logged in UserId data:", data)
         localStorage.setItem("loggedInUserId", data[0].user_id)
         setLoggedInUserId(data[0].user_id)
       })
@@ -75,12 +73,10 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
       })
       .then(res => res.json())
       .then((data) => {
-        console.log("tokenData:", data.accessToken)
         //store user access token in local storage. 
         localStorage.setItem("userAccessToken", data.accessToken) 
         localStorage.setItem("loggedInUserName", loginInfo.username)
         requestUserId(loginInfo.username)
-        console.log('3')
       });
     }
 
@@ -97,18 +93,14 @@ function LogIn({loggedInUsername, setLoggedInUsername, loggedInUserId, setLogged
         .then(res => res.json())
         .then(async(data) => {
           setUserName(data.username);
-          console.log('1')
-          console.log('logged in username: ', data.username);
           if(loginInfo.username === data.username){
             await requestAccessToken();
-             console.log('2')
           }
 
         })
         .then(()=>{
             handleClose();
             setLoggedIn(true);
-            console.log('4')
         });
         
         setLoggedInUsername(userName);

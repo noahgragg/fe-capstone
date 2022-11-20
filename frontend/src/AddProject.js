@@ -10,9 +10,7 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj, keys}) => {
     })
     
     const recordProject = (e) => {
-        setProjData({...projData, [e.target.name]: e.target.value})
-        console.log('project name:', projData.project_name)
-    }
+        setProjData({...projData, [e.target.name]: e.target.value})    }
     const addProject = (e) => {
         fetch(`${keys.dataURL}/api/project`, {
             method: 'POST', 

@@ -14,7 +14,6 @@ export const ManageProfile = ({loggedInUserId, keys}) => {
     .then(res => res.json())
     .then(data => {
       setManageUserInfo(data[0])
-      console.log('userInfo', data)
     })
   }, [])
 
@@ -24,7 +23,6 @@ export const ManageProfile = ({loggedInUserId, keys}) => {
     .then(res => res.json())
     .then(projects => {
       setManageUserProjects(projects)
-      console.log('projects', projects)
     })
   }, [])
 
@@ -93,7 +91,6 @@ const ProjModal = ({setOpenProjModal, openProjModal, projName, projDesc, projLin
     
     const recordProfileData = (e) => {
         setManageProjData({...manageProjData, [e.target.name]: e.target.value})
-        console.log('project name:', manageProjData.project_name)
     }
     const editProjectInfo = () => {
         fetch(`${keys.dataURL}/api/project/${projId}`, {
@@ -159,7 +156,6 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
     
     const recordUserInfoData = (e) => {
         setManageUserInfoData({...manageUserInfoData, [e.target.name]: e.target.value})
-        console.log('project name:', manageUserInfoData)
     }
     const editUserInfo = () => {
         fetch(`${keys.dataURL}/api/data/${loggedInUserId}`, {

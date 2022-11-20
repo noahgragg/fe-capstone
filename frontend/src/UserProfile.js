@@ -8,7 +8,6 @@ export const UserProfile = ({currentUserId, keys}) => {
     .then(res => res.json())
     .then(data => {
       setCurrentUserInfo(data[0])
-      console.log('userInfo', data)
     })
   }, [])
 
@@ -18,7 +17,6 @@ export const UserProfile = ({currentUserId, keys}) => {
     .then(res => res.json())
     .then(projects => {
       setCurrentUserProjects(projects)
-      console.log('projects', projects)
     })
   }, [])
 
