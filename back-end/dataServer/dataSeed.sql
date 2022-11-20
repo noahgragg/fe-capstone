@@ -1,7 +1,7 @@
 INSERT INTO users (username, first_name, last_name, summary, linkedIn_link, github_link, profile_image) 
 VALUES
 
-('test.guy@gmail.com', 'Test', 'Guy', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL', 'https://www.google.com/', 'https://www.google.com/', 'https://support.hubstaff.com/wp-content/uploads/2019/08/good-pic.png'),
+('test.guy@gmail.com', 'Test', 'Guy', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL', 'https://www.google.com/', 'https://www.google.com/', 'No Image'),
 
 ('joseph.t.low@gmail.com', 'Joe', 'Low', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL', 'www.linkedin.com/in/joe-low', 'https://github.com/Lowjoejoe', './profile-images/Joe_low.jpg'),
 ('noahgragg@gmail.com', 'Noah', 'Gragg', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL. code focused on World of Warcraft', 'https://www.linkedin.com/in/noahgragg/', 'https://github.com/noahgragg', 'No Image'),
