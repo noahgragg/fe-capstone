@@ -1,7 +1,8 @@
 import React,{ useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj, keys}) => {
+    const navigate = useNavigate();
     const [projData, setProjData] = useState({
         project_name: '',
         project_desc: '',
@@ -12,7 +13,7 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj, keys}) => {
         setProjData({...projData, [e.target.name]: e.target.value})
         console.log('project name:', projData.project_name)
     }
-    const addProject = () => {
+    const addProject = (e) => {
         fetch(`${keys.dataURL}/api/project`, {
             method: 'POST', 
             headers: {
@@ -29,6 +30,8 @@ const AddProject = ({loggedInUserId, openAddProj, setOpenAddProj, keys}) => {
         .then(res => res.json())
         .then(data => {
             alert(`Congratulations! ${data.message}`);
+            e.preventDefault();
+            navigate('/manage-profile')
         })
     }
 

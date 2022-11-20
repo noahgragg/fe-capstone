@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import { json }from 'react-router-dom';
+import { json, useNavigate }from 'react-router-dom';
+
 const CreateUser = ({keys}) => {
   //const dataURL = 'https://dataserverapi.onrender.com'
   // sets up state to be an empty object with the keys to be filled in by new user
   console.log('create user',keys)
+  const navigate = useNavigate();
   const[newUserToBeAdded, setNewUserToBeAdded]=useState({
     username: '',
     first_name: '',
@@ -37,6 +39,7 @@ const CreateUser = ({keys}) => {
   
   // Fetch Request to post new user to database
   const submitNewUser = (e) =>{
+    e.preventDefault();
     if(newUsernamePwd.password === newUsernamePwd.reenter){
     fetch(`${keys.dataURL}/api/data`, {
           method: 'POST',
@@ -60,7 +63,8 @@ const CreateUser = ({keys}) => {
         })
         .then(res => res.json())
         .then((data) => {
-          console.log(data);
+          console.log(data)
+          navigate('/home');
         })
       } else {
         alert('Your passwords do not match');
