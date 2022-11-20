@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import { json, useNavigate }from 'react-router-dom';
 
 const CreateUser = ({keys}) => {
+  //const dataURL = 'https://dataserverapi.onrender.com'
   // sets up state to be an empty object with the keys to be filled in by new user
+
   const navigate = useNavigate();
   const[newUserToBeAdded, setNewUserToBeAdded]=useState({
     username: '',
@@ -16,7 +18,7 @@ const CreateUser = ({keys}) => {
   
   const recordNewUserToBeAdded =(event)=>{
     //implement record newUser to be added
-    ("Record NewUser to be added:",newUserToBeAdded)
+    console.log("Record NewUser to be added:",newUserToBeAdded)
     setNewUserToBeAdded({...newUserToBeAdded, [event.target.name]:event.target.value});
   };
 
@@ -48,6 +50,9 @@ const CreateUser = ({keys}) => {
           body: JSON.stringify(newUserToBeAdded)
         })
         .then(res => res.json())
+        .then((data) => {
+          console.log(data);
+        })
     fetch(`${keys.dataURL}/user/create`, {
           method: 'POST',
           mode: 'cors',
@@ -57,7 +62,8 @@ const CreateUser = ({keys}) => {
           body: JSON.stringify(usernamePwd)
         })
         .then(res => res.json())
-        .then(() => {
+        .then((data) => {
+          console.log(data)
           navigate('/home');
         })
       } else {
