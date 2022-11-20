@@ -4,7 +4,6 @@ import { json, useNavigate }from 'react-router-dom';
 const CreateUser = ({keys}) => {
   //const dataURL = 'https://dataserverapi.onrender.com'
   // sets up state to be an empty object with the keys to be filled in by new user
-  console.log('create user',keys)
   const navigate = useNavigate();
   const[newUserToBeAdded, setNewUserToBeAdded]=useState({
     username: '',

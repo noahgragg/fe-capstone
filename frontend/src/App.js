@@ -6,14 +6,15 @@ import NavBar from './NavBar';
 import Home from './Home';
 import CreateUser from './CreateUser';
 import UserProfile from './UserProfile';
+import LogIn from './LogIn';
 import { ManageProfile } from './ManageProfile';
 import AboutSite from './AboutSite';
 const App = () => {
   const dataURL = 'https://dataserverapi.onrender.com'
-  
+  var initialState = localStorage.getItem('loggedInUserId') ? localStorage.getItem('loggedInUserId') : '';
   const [loggedInUsername, setLoggedInUsername] = useState('');
   console.log('logged in User: ', loggedInUsername);
-  const [loggedInUserId, setLoggedInUserId] = useState('');
+  const [loggedInUserId, setLoggedInUserId] = useState(initialState);
   console.log('logged in UserId:',loggedInUserId );
   const [currentUserId, setCurrentUserId] = useState(null);
   const [profileCardInfo, setProfileCardInfo] = useState([{
