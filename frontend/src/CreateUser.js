@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { json, useNavigate }from 'react-router-dom';
 
 const CreateUser = ({keys}) => {
-  //const dataURL = 'https://dataserverapi.onrender.com'
   // sets up state to be an empty object with the keys to be filled in by new user
   const navigate = useNavigate();
   const[newUserToBeAdded, setNewUserToBeAdded]=useState({
@@ -49,8 +48,6 @@ const CreateUser = ({keys}) => {
           body: JSON.stringify(newUserToBeAdded)
         })
         .then(res => res.json())
-        .then((data) => {
-        })
     fetch(`${keys.dataURL}/user/create`, {
           method: 'POST',
           mode: 'cors',
@@ -60,7 +57,7 @@ const CreateUser = ({keys}) => {
           body: JSON.stringify(usernamePwd)
         })
         .then(res => res.json())
-        .then((data) => {
+        .then(() => {
           navigate('/home');
         })
       } else {
