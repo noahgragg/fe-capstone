@@ -15,11 +15,28 @@ body {
     /* HEADER and NAVBAR STYLING */
 .header-container { 
     height: 250px;
-    background-image: url('laptop_img.jpg');
+    background-image: url('BannerImage.jpg');
     background-position: 0 -175px;
+    font-family: 'Oleo Script', cursive;
+    /* font-family: 'Fugaz One', cursive; */
+    color: rgb(225, 227, 234);
+    /* text-shadow: 1vh 1vh 1vh #000000; */
+    text-shadow: -8px 0 black, 0 8px black, 8px 0 black, 0 -8px black;
+    font-size: 12vh;
+    text-align: center;
     /* background-image: url('header_bkimg.jpg'); */
-    
 }
+
+/* .headerText{
+    background-color: rgba(240, 248, 255, 0.33);
+    border-radius: 5vh;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    position: relative;
+    left: 70vh;
+} */
+
 .below-header {
     height: 10px;
     width: 100%;
@@ -37,6 +54,7 @@ body {
     position: sticky;
     top: 0;
     border-bottom: 10px solid grey;
+    z-index: 1;
 }
 .nav-bar-home {
     display: flex;
@@ -128,6 +146,11 @@ body {
     /* width: 90%; */
 }
 
+img {
+    border-radius: 1px;
+    box-shadow: 0px 0px 4px 4px rgb(215, 212, 212);
+}
+
 .profile-container {
     display: flex;
     justify-content: flex-start;
@@ -196,7 +219,7 @@ body {
         justify-content: space-between;
         width: 80%;
         margin-top: 50px;
-        background-color: black;
+        background-color: rgb(21, 20, 20);
         border: 3px solid  rgb(125, 133, 151);
         border-radius: 1vw;
         color: rgb(215, 225, 229);
@@ -225,10 +248,10 @@ body {
         width: 700px;
     }
     .project-link {
-        color:rgb(102, 238, 95);
+        color:rgb(236, 233, 56);
     }
     .project-link:hover {
-        color:rgb(36, 149, 34);
+        color:rgb(218, 232, 33);
     }
     .resume-link {
         color:rgb(71, 124, 215);
@@ -276,12 +299,17 @@ body {
     color: aliceblue;
 }
 
-.modal-footer {
+.update-modal-footer {
     margin-top: 3vh;
     border: 3px solid rgb(125, 133, 151);
     border-radius: 10px;
     box-shadow: 5px 5px 5px grey;
 }
+
+.modal-title.h4{
+    color: black;
+}
+
 #proj-edit-input {
     width: 250px;
     overflow-x: visible;
@@ -380,7 +408,7 @@ body {
 .about-body {
     width: 55vw;
     margin-top: 50px;
-    background-color: rgba(0, 0, 0, 0.92);
+    background-color: rgb(21, 20, 20, 0.98);
     padding: 20px;
     border-radius: 3vh;
     border: solid;

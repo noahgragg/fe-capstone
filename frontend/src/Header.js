@@ -5,6 +5,7 @@ import React from 'react';
 const Header = () => {
   return (
     <div className='header-container'>
+      <p className='headerText'>DEV Shack</p>
         {/* <div className='nav-bar'>
             <div className='nav-bar-home'>
                 <Link id='nav-link' to='./home'><FaHome /></Link> 
