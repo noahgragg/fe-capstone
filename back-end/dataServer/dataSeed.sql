@@ -1,7 +1,7 @@
 INSERT INTO users (username, first_name, last_name, summary, linkedIn_link, github_link, profile_image) 
 VALUES
 
-('test.guy@gmail.com', 'Test', 'Guy', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL', 'https://www.google.com/', 'https://www.google.com/', ''),
+('test.guy@gmail.com', 'Test', 'Guy', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL', 'https://www.google.com/', 'https://www.google.com/', 'https://support.hubstaff.com/wp-content/uploads/2019/08/good-pic.png'),
 
 ('joseph.t.low@gmail.com', 'Joe', 'Low', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL', 'www.linkedin.com/in/joe-low', 'https://github.com/Lowjoejoe', './profile-images/Joe_low.jpg'),
 ('noahgragg@gmail.com', 'Noah', 'Gragg', 'junior software engineer with experience with JavaScript, HTML, CSS, React.js, postgreSQL. code focused on World of Warcraft', 'https://www.linkedin.com/in/noahgragg/', 'https://github.com/noahgragg', 'No Image'),
@@ -10,6 +10,9 @@ VALUES
 INSERT INTO projects (project_name, project_link, project_desc, user_id)
 VALUES 
 ('Online Project', 'https://www.google.com/','it takes you to google home page.', 1),
+('Online Project', 'https://www.youtube.com/','I am also taking credit for creating a little known website called youtube.', 1),
+
+
 
 ('React-MVP-Circuit-Workouts', 'https://github.com/Lowjoejoe/React-MVP-Circuit-Workouts','allows users to build custom circuit workouts', 1),
 ('mvp-fullstack', 'https://github.com/noahgragg/mvp-fullstack', 'displays loot and bosses from Ice Crown Citadel.', 2),
