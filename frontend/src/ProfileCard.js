@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import profile_img from './css/profile_img.jpg';
-import { FaLinkedin, FaGithub, FaLink } from 'react-icons/fa';
+import { Falinkedin, FaGithub, FaLink } from 'react-icons/fa';
 
 
 const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, infoId, setCurrentUserId}) => {
@@ -15,7 +15,7 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, 
           <div className='profile-name'>
             <h4>{infoFName} {infoLName}</h4>&nbsp;&nbsp;
             <a className='github' href={infoGithub}><FaGithub /></a>&nbsp;
-            <a className='linkedin' href='#'><FaLinkedin /></a>
+            <a className='linkedin' href='#'><Falinkedin /></a>
           </div><br />
           <div className='profile-summary'>
             <div>

@@ -35,7 +35,7 @@ export const UserProfile = ({currentUserId, keys}) => {
             </p>
           </div><br /><br />
           <div className='user-profile-linked'>
-          <a className='linked-link' href='#'>LinkedIn Profile</a>
+          <a className='linked-link' href='#'>linkedin Profile</a>
           </div>
           <div className='user-profile-resume'>
             <a className='resume-link' href='#'>View Resume</a>
