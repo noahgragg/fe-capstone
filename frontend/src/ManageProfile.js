@@ -46,7 +46,7 @@ export const ManageProfile = ({loggedInUserId}) => {
             </p>
           </div><br /><br />
           <div className='user-profile-linked'>
-          <a className='linked-link' href='#'>LinkedIn Profile</a>
+          <a className='linked-link' href='#'>linkedIn Profile</a>
           </div>
           <div className='user-profile-resume'>
             <a className='resume-link' href='#'>View Resume</a>
@@ -154,12 +154,12 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
         last_name: manageUserInfo.last_name,
         summary: manageUserInfo.summary,
         github_link: manageUserInfo.github_link,
-        linkedIn_link: manageUserInfo.linkedIn_link
+        linkedin_link: manageUserInfo.linkedin_link
     })
     
     const recordUserInfoData = (e) => {
         setManageUserInfoData({...manageUserInfoData, [e.target.name]: e.target.value})
-        console.log('project name:', manageUserInfoData)
+        console.log('UserInfo:', manageUserInfoData)
     }
     const editUserInfo = () => {
         fetch(`http://localhost:8000/api/data/${loggedInUserId}`, {
@@ -173,8 +173,8 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                 first_name: manageUserInfoData.first_name,
                 last_name: manageUserInfoData.last_name,
                 summary: manageUserInfoData.summary,
+                linkedin_link: manageUserInfoData.linkedin_link,
                 github_link: manageUserInfoData.github_link,
-                linkedIn_link: manageUserInfoData.linkedIn_link
             })
         })
         .then(res => res.json())
@@ -198,15 +198,15 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                         <h2>Edit User Information</h2>
                     </div>
                     <div className='modal-body'>
-                        <input id='user-edit-input' type='text' placeholder='edit project name'name='first_name' 
+                        <input id='user-edit-input' type='text' placeholder='First Name'name='first_name' 
                         onChange={recordUserInfoData} value={manageUserInfoData.first_name}/><br />
-                        <input id='user-edit-input' type='text' placeholder='edit project name'name='last_name' 
+                        <input id='user-edit-input' type='text' placeholder='Last Name'name='last_name' 
                         onChange={recordUserInfoData} value={manageUserInfoData.last_name}/><br />
-                        <input id='user-edit-input' type='text' placeholder='edit project name'name='github_link' 
+                        <input id='user-edit-input' type='text' placeholder='Github link'name='github_link' 
                         onChange={recordUserInfoData} value={manageUserInfoData.github_link}/><br />
-                        <input id='user-edit-input' type='text' placeholder='edit project name'name='linkedIn_link' 
-                        onChange={recordUserInfoData} value={manageUserInfoData.linkedIn_link}/><br />
-                        <textarea id='user-edit-text' type='text' placeholder='edit project name'name='summary' 
+                        <input id='user-edit-input' type='text' placeholder='linkedIn Link'name='linkedin_link' 
+                        onChange={recordUserInfoData} value={manageUserInfoData.linkedin_link}/><br />
+                        <textarea id='user-edit-text' type='text' placeholder='Profile Summary'name='summary' 
                         onChange={recordUserInfoData} value={manageUserInfoData.summary}/>
                         
                     </div>

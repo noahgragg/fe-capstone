@@ -30,14 +30,14 @@ export const UserProfile = ({currentUserId}) => {
             <h2>{currentUserInfo.first_name} {currentUserInfo.last_name}</h2>
           </div>
           <div className='user-profile-photo'>
-            <img src={profile_img} width='200px'/>
+            <img src={currentUserInfo.profile_image} width='200px'/>
           </div>
           <div className='user-profile-summary'>
             <p>{currentUserInfo.summary}
             </p>
           </div><br /><br />
           <div className='user-profile-linked'>
-          <a className='linked-link' href='#'>LinkedIn Profile</a>
+          <a className='linked-link' href='#'>linkedIn Profile</a>
           </div>
           <div className='user-profile-resume'>
             <a className='resume-link' href='#'>View Resume</a>
