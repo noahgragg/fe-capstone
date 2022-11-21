@@ -22,7 +22,7 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, 
           </div><br />
           <div className='profile-summary'>
             <div>
-              <p><h4 className='profile-summary-h4'>Summary:</h4>{infoSummary}</p>
+              <p>{infoSummary}</p>
             </div>
             <div className='profile-links'>
               <Link onClick={(e)=>{setCurrentUserId(e.target.id)}} id={infoId} 

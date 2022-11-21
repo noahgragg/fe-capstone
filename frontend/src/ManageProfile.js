@@ -203,7 +203,7 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                         <input id='user-edit-input' type='text' placeholder='linkedin'name='linkedin_link' 
                         onChange={recordUserInfoData} value={manageUserInfoData.linkedin_link}/><br />
                         <textarea id='user-edit-text' type='text' placeholder='Summary'name='summary' 
-                        onChange={recordUserInfoData} value={manageUserInfoData.summary}/>
+                        onChange={recordUserInfoData} value={manageUserInfoData.summary} maxlength='175'/>
                         
                     </div>
                     <div className='update-modal-footer'>
