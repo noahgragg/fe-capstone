@@ -79,7 +79,7 @@ app.post('/api/data', (req,res)=>{
             res.send(`404 ERROR: bad input please provide all input fields: username|first_name|last_name|summary|linkedin_link|github_link`)
         }
 });
-app.patch('/api/data/photo', (req, res)=> {
+app.patch('/api/data/photo', authenticateToken,(req, res)=> {
     let { image, username } = req.body
     console.log(req.body)
     pool.query(`UPDATE users SET profile_image='https://fe-capstone-bucket.s3.us-east-2.amazonaws.com/${image}' WHERE username='${username}';`)

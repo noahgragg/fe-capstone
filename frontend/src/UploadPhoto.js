@@ -51,6 +51,8 @@ function uploadFilePath(fileName, userName){
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
+            'authorization': `Bearer ${localStorage.getItem("userAccessToken")}`
+            
         },
         body: JSON.stringify({image: fileName, username: userName}),
       })
