@@ -169,8 +169,8 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                 first_name: manageUserInfoData.first_name,
                 last_name: manageUserInfoData.last_name,
                 summary: manageUserInfoData.summary,
-                github_link: manageUserInfoData.github_link,
-                linkedin_link: manageUserInfoData.linkedin_link
+                github_link: '//' + manageUserInfoData.github_link,
+                linkedin_link: '//' + manageUserInfoData.linkedin_link
             })
         })
         .then(res => res.json())
@@ -199,9 +199,9 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                         <input id='user-edit-input' type='text' placeholder='Last Name'name='last_name' 
                         onChange={recordUserInfoData} value={manageUserInfoData.last_name}/><br />
                         <input id='user-edit-input' type='text' placeholder='GitHub'name='github_link' 
-                        onChange={recordUserInfoData} value={'//' + manageUserInfoData.github_link}/><br />
+                        onChange={recordUserInfoData} value={manageUserInfoData.github_link}/><br />
                         <input id='user-edit-input' type='text' placeholder='linkedin'name='linkedin_link' 
-                        onChange={recordUserInfoData} value={'//' + manageUserInfoData.linkedin_link}/><br />
+                        onChange={recordUserInfoData} value={manageUserInfoData.linkedin_link}/><br />
                         <textarea id='user-edit-text' type='text' placeholder='Summary'name='summary' 
                         onChange={recordUserInfoData} value={manageUserInfoData.summary}/>
                         
