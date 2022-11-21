@@ -152,7 +152,7 @@ img {
     max-width: 200px;
     max-height: 200px;
     aspect-ratio: 1;
-    
+    padding: 2px;
 }
 
 .profile-container {
