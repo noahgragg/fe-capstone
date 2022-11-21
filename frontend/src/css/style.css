@@ -172,6 +172,7 @@ img {
     justify-content: center;
     align-items: flex-end;
     color: rgb(71, 124, 215);
+    flex-direction: column;
     
 }
 .github {
@@ -188,7 +189,7 @@ img {
     justify-content: space-between;
     align-items: center; 
     height: 280px;
-    width: 180px;
+    width: 98%;
 }
 .profile-summary-h4 {
     color: white;
