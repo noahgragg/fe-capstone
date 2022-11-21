@@ -169,8 +169,8 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                 first_name: manageUserInfoData.first_name,
                 last_name: manageUserInfoData.last_name,
                 summary: manageUserInfoData.summary,
-                github_link: '//' + manageUserInfoData.github_link,
-                linkedin_link: '//' + manageUserInfoData.linkedin_link
+                github_link: (manageUserInfoData.github_link).includes('//') ? manageUserInfoData.github_link : 'https://' + manageUserInfoData.github_link,
+                linkedin_link: (manageUserInfoData.linkedin_link).includes('//') ? manageUserInfoData.linkedin_link : 'https://' + manageUserInfoData.linkedin_link
             })
         })
         .then(res => res.json())

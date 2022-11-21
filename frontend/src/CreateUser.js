@@ -41,6 +41,7 @@ const CreateUser = ({keys}) => {
   const submitNewUser = (e) =>{
     e.preventDefault();
     submitted+=1;
+    console.log(submitted)
     if(newUsernamePwd.password === newUsernamePwd.reenter){
     fetch(`${keys.dataURL}/api/data`, {
           method: 'POST',
