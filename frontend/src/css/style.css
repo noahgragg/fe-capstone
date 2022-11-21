@@ -164,9 +164,8 @@ img {
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 50px;
-    width: 225px;
+    width: 250px;
     height: 560px;
-    overflow: hidden;
 }
 .profile-name {
     display: flex;
@@ -190,10 +189,10 @@ img {
     align-items: center; 
     height: 280px;
     width: 180px;
-    overflow-y: scroll;
 }
 .profile-summary-h4 {
     color: white;
+    overflow: hidden;
 }
 .profile-links {
     text-align: center;

@@ -10,13 +10,15 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, 
       
         <div className='profile-container'>
           <div className='profile-img'>
-            <img src={infoImage != 'No Image' ? infoImage : profile_img} width='200px'/>
+            <img src={infoImage != 'No Image' ? infoImage : profile_img} width='98%'/>
           </div>
           <div className='profile-name'>
             <h4>{infoFName}</h4>&nbsp;
             <h4> {infoLName}</h4>&nbsp;
-            <a className='github' href={infoGithub}><FaGithub /></a>&nbsp;
-            <a className='linkedin' href={infoLinkedIn}><FaLinkedin /></a>
+            <div className='link-buttons'>
+              <a className='github' href={infoGithub}><FaGithub /></a>&nbsp;
+              <a className='linkedin' href={infoLinkedIn}><FaLinkedin /></a>
+            </div>
           </div><br />
           <div className='profile-summary'>
             <div>
