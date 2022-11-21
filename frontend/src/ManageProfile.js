@@ -199,9 +199,9 @@ const UserInfoModal = ({setOpenUserInfoModal, openUserInfoModal, manageUserInfo,
                         <input id='user-edit-input' type='text' placeholder='Last Name'name='last_name' 
                         onChange={recordUserInfoData} value={manageUserInfoData.last_name}/><br />
                         <input id='user-edit-input' type='text' placeholder='GitHub'name='github_link' 
-                        onChange={recordUserInfoData} value={manageUserInfoData.github_link}/><br />
+                        onChange={recordUserInfoData} value={'//' + manageUserInfoData.github_link}/><br />
                         <input id='user-edit-input' type='text' placeholder='linkedin'name='linkedin_link' 
-                        onChange={recordUserInfoData} value={manageUserInfoData.linkedin_link}/><br />
+                        onChange={recordUserInfoData} value={'//' + manageUserInfoData.linkedin_link}/><br />
                         <textarea id='user-edit-text' type='text' placeholder='Summary'name='summary' 
                         onChange={recordUserInfoData} value={manageUserInfoData.summary}/>
                         
