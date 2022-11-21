@@ -13,9 +13,9 @@ const ProfileCard = ({infoFName, infoLName, infoSummary, infoGithub, infoImage, 
             <img src={infoImage != 'No Image' ? infoImage : profile_img} width='98%'/>
           </div>
           <div className='profile-name'>
-            <h4>{infoFName} {infoLName}</h4>
+            <h4>{infoFName}{infoLName}</h4>
             <div className='link-buttons'>
-              <a className='github' href={infoGithub}><FaGithub /></a>
+              <a className='github' href={infoGithub}><FaGithub /></a>&nbsp;
               <a className='linkedin' href={infoLinkedIn}><FaLinkedin /></a>
             </div>
           </div><br />
