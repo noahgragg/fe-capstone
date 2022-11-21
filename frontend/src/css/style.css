@@ -189,6 +189,7 @@ img {
     align-items: center; 
     height: 280px;
     width: 180px;
+    overflow-y: scroll;
 }
 .profile-summary-h4 {
     color: white;
