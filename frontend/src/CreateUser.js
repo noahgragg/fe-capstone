@@ -40,6 +40,7 @@ const CreateUser = ({keys}) => {
   // Fetch Request to post new user to database
   const submitNewUser = (e) =>{
     e.preventDefault();
+    submitted+=1;
     if(newUsernamePwd.password === newUsernamePwd.reenter){
     fetch(`${keys.dataURL}/api/data`, {
           method: 'POST',
@@ -63,7 +64,6 @@ const CreateUser = ({keys}) => {
         })
         .then(res => res.json())
         .then((data) => {
-          submitted+=1;
           console.log(data);
           navigate('/home');
         })
