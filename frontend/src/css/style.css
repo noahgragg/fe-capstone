@@ -170,7 +170,7 @@ img {
 .profile-name {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     color: rgb(71, 124, 215);
     flex-direction: column;
     
