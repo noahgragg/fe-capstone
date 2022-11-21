@@ -166,6 +166,7 @@ img {
     margin-bottom: 50px;
     width: 225px;
     height: 560px;
+    overflow: hidden;
 }
 .profile-name {
     display: flex;
