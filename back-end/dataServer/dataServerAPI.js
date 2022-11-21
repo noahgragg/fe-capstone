@@ -67,7 +67,7 @@ app.post('/api/data', (req,res)=>{
             })
         }else{
             res.status(404);
-            res.send(`404 ERROR: bad input please provide all input fields: username|first_name|last_name|summary|linkedIn_link|github_link`)
+            res.send(`404 ERROR: bad input please provide all input fields: username|first_name|last_name|summary|linkedin_link|github_link`)
         }
 });
 app.patch('/api/data/photo', (req, res)=> {
@@ -85,11 +85,11 @@ app.patch('/api/data/photo', (req, res)=> {
 })
 // update user data to the data base
 app.patch('/api/data/:id', authenticateToken, (req,res)=>{
-    let {first_name, last_name, summary, linkedIn_link, github_link} = req.body; 
+    let {first_name, last_name, summary, linkedin_link, github_link} = req.body; 
 console.log("request to update userdata:",req.body)
-    if(first_name && last_name && summary && linkedIn_link && github_link &&
-         first_name.length != 0 && last_name.length != 0 && summary.length != 0 && linkedIn_link.length != 0 && github_link.length != 0){
-           pool.query (`UPDATE users SET first_name= $1, last_name=$2, summary=$3, linkedIn_link=$4, github_link=$5 WHERE user_id = ${req.params.id}`, [first_name, last_name,summary,linkedIn_link, github_link])
+    if(first_name && last_name && summary && linkedin_link && github_link &&
+         first_name.length != 0 && last_name.length != 0 && summary.length != 0 && linkedin_link.length != 0 && github_link.length != 0){
+           pool.query (`UPDATE users SET first_name= $1, last_name=$2, summary=$3, linkedin_link=$4, github_link=$5 WHERE user_id = ${req.params.id}`, [first_name, last_name,summary,linkedin_link, github_link])
             .then(results=>{
                 res.status(201);
                 res.send({message:`Updated user data to data base`});
@@ -99,7 +99,7 @@ console.log("request to update userdata:",req.body)
             })
         }else{
             res.status(404);
-            res.send(`404 ERROR: bad input please provide all input fields: username|first_name|last_name|summary|linkedIn_link|github_link`)
+            res.send(`404 ERROR: bad input please provide all input fields: username|first_name|last_name|summary|linkedin_link|github_link`)
         }
 });
 
