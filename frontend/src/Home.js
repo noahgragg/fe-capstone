@@ -22,7 +22,7 @@ const Home = ({profileCardInfo, setCurrentUserId}) => {
                  return <ProfileCard infoId={info.user_id} infoFName={info.first_name}
                     infoLName={info.last_name} infoSummary={info.summary} infolinkedin={info.linkedin_link}
                     infoGithub={info.github_link} setCurrentUserId={setCurrentUserId}
-                    infoImage={info.profile_image} />
+                    infoImage={info.profile_image} infoLinkedIn={info.linkedin_link}/>
               })}
             </div>
         </div>

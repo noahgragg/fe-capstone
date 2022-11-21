@@ -4,7 +4,7 @@ import { json, useNavigate }from 'react-router-dom';
 const CreateUser = ({keys}) => {
   //const dataURL = 'https://dataserverapi.onrender.com'
   // sets up state to be an empty object with the keys to be filled in by new user
-
+  var submitted = 0;
   const navigate = useNavigate();
   const[newUserToBeAdded, setNewUserToBeAdded]=useState({
     username: '',
@@ -63,7 +63,8 @@ const CreateUser = ({keys}) => {
         })
         .then(res => res.json())
         .then((data) => {
-          console.log(data)
+          submitted+=1;
+          console.log(data);
           navigate('/home');
         })
       } else {
@@ -84,7 +85,7 @@ const CreateUser = ({keys}) => {
         <input type='password' className='newUserInput'placeholder='password' name='password' onChange={recordNewUsernamePwd} required value={newUsernamePwd.password}></input>
         <input type='password' className='newUserInput'placeholder='re-enter' name='reenter' onChange={recordNewUsernamePwd} required value={newUsernamePwd.reenter}></input>
         {/* <input type='text' className='newUserInput'placeholder='github link' name='github_link' onChange={recordNewUserToBeAdded} required value={newUserToBeAdded.github_link}></input> */}
-        <button type='submit' className='addNewUserButton' onClick={submitNewUser}>Create New User</button>
+        <button type='submit' className='addNewUserButton' onClick={submitted === 0 ? submitNewUser : ''}>Create New User</button>
       </form>
       </div>
     </div>

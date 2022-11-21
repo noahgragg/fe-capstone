@@ -44,10 +44,10 @@ export const ManageProfile = ({loggedInUserId, keys}) => {
             </p>
           </div><br /><br />
           <div className='user-profile-linked'>
-          <a className='linked-link' href='#'>linkedin Profile</a>
+          <a className='linked-link' href={manageUserInfo.linkedin_link}>LinkedIn Profile</a>
           </div>
           <div className='user-profile-resume'>
-            <a className='resume-link' href='#'>View Resume</a>
+            <a className='github-link' href={manageUserInfo.github_link}>Github Profile</a>
           </div>
         </div>
         <div className='user-profile-projects'>

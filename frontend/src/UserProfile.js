@@ -35,10 +35,10 @@ export const UserProfile = ({currentUserId, keys}) => {
             </p>
           </div><br /><br />
           <div className='user-profile-linked'>
-          <a className='linked-link' href='#'>linkedin Profile</a>
+          <a className='linked-link' href={currentUserInfo.linked_link}>LinkedIn Profile</a>
           </div>
           <div className='user-profile-resume'>
-            <a className='resume-link' href='#'>View Resume</a>
+            <a className='resume-link' href={currentUserInfo.github_link}>Github Profile</a>
           </div>
         </div>
         <div className='user-profile-projects'>
